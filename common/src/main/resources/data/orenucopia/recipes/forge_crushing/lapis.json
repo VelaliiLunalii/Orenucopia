@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:lapis_lazuli"
+  },
+  "results": [
+    {
+      "item": "orenucopia:lapis_nugget",
+      "count": 4
+    }
+  ]
+}

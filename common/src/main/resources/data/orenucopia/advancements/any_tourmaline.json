@@ -1,0 +1,95 @@
+{
+  "parent": "minecraft:story/root",
+  "display": {
+    "icon": {
+      "item": "orenucopia:blank_tourmaline"
+    },
+    "title": {
+      "translate": "advancement.orenucopia.any_tourmaline"
+    },
+    "description": {
+      "translate": "advancement.orenucopia.any_tourmaline.desc",
+      "color": "#DBA213"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_transgender_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:transgender}"
+          }
+        ]
+      }
+    },
+    "has_lesbian_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:lesbian}"
+          }
+        ]
+      }
+    },
+    "has_bisexual_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:bisexual}"
+          }
+        ]
+      }
+    },
+    "has_asexual_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:asexual}"
+          }
+        ]
+      }
+    },
+    "has_non_binary_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:non_binary}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_transgender_tourmaline",
+      "has_lesbian_tourmaline",
+      "has_bisexual_tourmaline",
+      "has_asexual_tourmaline",
+      "has_non_binary_tourmaline"
+    ]
+  ]
+}

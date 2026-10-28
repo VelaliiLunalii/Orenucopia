@@ -1,0 +1,14 @@
+{
+  "replace": "false",
+  "values": [
+    "orenucopia:raw_iron_nugget",
+    "orenucopia:redstone_nugget",
+    "orenucopia:lapis_nugget",
+    "orenucopia:raw_gold_nugget",
+    "orenucopia:diamond_nugget",
+    "orenucopia:raw_copper_nugget",
+    "orenucopia:coal_nugget",
+    "orenucopia:emerald_nugget",
+    "orenucopia:quartz_nugget"
+  ]
+}

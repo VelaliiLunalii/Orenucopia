@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:story/root",
+  "display": {
+    "icon": {
+      "item": "orenucopia:tourmaline",
+      "nbt": "{Tourmaline:transgender}"
+    },
+    "title": {
+      "translate": "advancement.orenucopia.transgender_tourmaline",
+      "color": "#5BCEFA"
+    },
+    "description": {
+      "translate": "advancement.orenucopia.transgender_tourmaline.desc",
+      "color": "#F5A9B8"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_transgender_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:transgender}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_transgender_tourmaline"
+    ]
+  ]
+}

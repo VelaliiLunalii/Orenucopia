@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "results": [
+    {
+      "item": "orenucopia:coal_nugget",
+      "count": 4
+    }
+  ]
+}

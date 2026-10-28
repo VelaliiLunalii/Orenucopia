@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "orenucopia:item/blank_tourmaline"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "orenucopia:transgender": 1
+      },
+      "model": "orenucopia:item/tourmaline_transgender"
+    },
+    {
+      "predicate": {
+        "orenucopia:lesbian": 1
+      },
+      "model": "orenucopia:item/tourmaline_lesbian"
+    },
+    {
+      "predicate": {
+        "orenucopia:bisexual": 1
+      },
+      "model": "orenucopia:item/tourmaline_bisexual"
+    },
+    {
+      "predicate": {
+        "orenucopia:asexual": 1
+      },
+      "model": "orenucopia:item/tourmaline_asexual"
+    },
+    {
+      "predicate": {
+        "orenucopia:non_binary": 1
+      },
+      "model": "orenucopia:item/tourmaline_non_binary"
+    }
+  ]
+}

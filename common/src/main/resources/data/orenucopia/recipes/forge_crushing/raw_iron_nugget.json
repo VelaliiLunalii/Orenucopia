@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:raw_iron"
+  },
+  "results": [
+    {
+      "item": "orenucopia:raw_iron_nugget",
+      "count": 4
+    }
+  ]
+}

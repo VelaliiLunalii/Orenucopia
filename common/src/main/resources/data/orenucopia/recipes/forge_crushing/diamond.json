@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:diamond"
+  },
+  "results": [
+    {
+      "item": "orenucopia:diamond_nugget",
+      "count": 4
+    }
+  ]
+}

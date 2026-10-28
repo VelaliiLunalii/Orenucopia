@@ -1,0 +1,163 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "orenucopia:coal_nugget",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "orenucopia:coal_outcrop",
+                  "properties": {
+                    "age": "0"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:coal",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "orenucopia:coal_outcrop",
+                  "properties": {
+                    "age": "1"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "orenucopia:coal_outcrop",
+              "properties": {
+                "aging": "true"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "orenucopia:coal_nugget",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "orenucopia:coal_outcrop",
+                  "properties": {
+                    "age": "0"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:alternatives",
+                  "children": [
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:coal_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.05,
+                            0.1,
+                            0.2,
+                            0.5
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:experience_dust"
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "enchantments": [
+                          {
+                            "enchantment": "orenucopia:prospecting",
+                            "levels": {
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "minecraft:alternatives",
+                  "children": [
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:coal_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.005,
+                            0.01,
+                            0.02,
+                            0.05
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "functions": [
+                        {
+                          "enchantment": "minecraft:fortune",
+                          "formula": "minecraft:ore_drops",
+                          "function": "minecraft:apply_bonus"
+                        }
+                      ],
+                      "name": "minecraft:coal"
+                    }
+                  ]
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "orenucopia:coal_outcrop",
+                  "properties": {
+                    "age": "1"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "orenucopia:coal_outcrop",
+              "properties": {
+                "aging": "false"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

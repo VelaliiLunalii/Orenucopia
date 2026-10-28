@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:redstone"
+  },
+  "results": [
+    {
+      "item": "orenucopia:redstone_nugget",
+      "count": 4
+    }
+  ]
+}
