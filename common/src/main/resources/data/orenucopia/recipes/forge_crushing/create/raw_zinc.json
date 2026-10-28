@@ -1,0 +1,16 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "orenucopia:aurichalcite_chunk"
+  },
+  "results": [
+    {
+      "item": "create:raw_zinc",
+      "count": 6
+    },
+    {
+      "item": "minecraft:raw_copper",
+      "count": 2
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "orenucopia:pyrite_chunk"
+  },
+  "results": [
+    {
+      "item": "minecraft:raw_iron",
+      "count": 6
+    },
+    {
+      "item": "minecraft:raw_gold",
+      "count": 2
+    }
+  ]
+}

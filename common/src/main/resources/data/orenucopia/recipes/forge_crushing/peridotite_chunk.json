@@ -1,0 +1,16 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "orenucopia:peridotite_chunk"
+  },
+  "results": [
+    {
+      "item": "minecraft:diamond",
+      "count": 6
+    },
+    {
+      "item": "minecraft:emerald",
+      "count": 2
+    }
+  ]
+}

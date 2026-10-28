@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "orenucopia:coal_outcrop",
+    "orenucopia:copper_outcrop",
+    "orenucopia:diamond_outcrop",
+    "orenucopia:gold_outcrop",
+    "orenucopia:iron_outcrop",
+    "orenucopia:lapis_outcrop",
+    "orenucopia:redstone_outcrop",
+    "orenucopia:emerald_outcrop"
+  ]
+}

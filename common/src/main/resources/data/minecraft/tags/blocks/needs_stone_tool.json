@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "orenucopia:coal_outcrop",
+    "orenucopia:copper_outcrop",
+    "orenucopia:iron_outcrop"
+  ]
+}

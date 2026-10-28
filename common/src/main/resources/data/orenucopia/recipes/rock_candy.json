@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "N": {
+      "tag": "orenucopia:raw_nuggets"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "NS",
+    "SN"
+  ],
+  "result": {
+    "item": "orenucopia:rock_candy",
+    "count": 4
+  }
+}

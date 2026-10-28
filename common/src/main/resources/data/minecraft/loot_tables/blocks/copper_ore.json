@@ -1,0 +1,222 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "minecraft:copper_ore"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:alternatives",
+                  "children": [
+                    {
+                      "type": "minecraft:item",
+                      "functions": [
+                        {
+                          "add": false,
+                          "count": 2,
+                          "function": "minecraft:set_count"
+                        }
+                      ],
+                      "name": "orenucopia:cuprite_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.04,
+                            0.08,
+                            0.16,
+                            0.4
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:tumbaga_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.01,
+                            0.022,
+                            0.048,
+                            0.17
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:aurichalcite_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.01,
+                            0.022,
+                            0.048,
+                            0.17
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:experience_dust"
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "enchantments": [
+                          {
+                            "enchantment": "orenucopia:prospecting",
+                            "levels": {
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "minecraft:alternatives",
+                  "children": [
+                    {
+                      "type": "minecraft:item",
+                      "functions": [
+                        {
+                          "add": false,
+                          "count": 2,
+                          "function": "minecraft:set_count"
+                        }
+                      ],
+                      "name": "orenucopia:cuprite_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.0004,
+                            0.008,
+                            0.016,
+                            0.04
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:tumbaga_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.001,
+                            0.002,
+                            0.004,
+                            0.01
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "name": "orenucopia:aurichalcite_chunk",
+                      "conditions": [
+                        {
+                          "chances": [
+                            0.001,
+                            0.002,
+                            0.004,
+                            0.01
+                          ],
+                          "condition": "minecraft:table_bonus",
+                          "enchantment": "minecraft:fortune"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "functions": [
+                        {
+                          "add": false,
+                          "count": {
+                            "type": "minecraft:uniform",
+                            "max": 5,
+                            "min": 2
+                          },
+                          "function": "minecraft:set_count"
+                        },
+                        {
+                          "enchantment": "minecraft:fortune",
+                          "formula": "minecraft:ore_drops",
+                          "function": "minecraft:apply_bonus"
+                        }
+                      ],
+                      "name": "minecraft:raw_copper"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 2.0
+                  },
+                  "function": "minecraft:set_count"
+                },
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:ore_drops",
+                  "function": "minecraft:apply_bonus"
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ],
+              "name": "minecraft:raw_copper"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

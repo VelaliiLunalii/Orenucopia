@@ -1,0 +1,16 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "orenucopia:lazurite_chunk"
+  },
+  "results": [
+    {
+      "item": "minecraft:quartz",
+      "count": 6
+    },
+    {
+      "item": "minecraft:lapis_lazuli",
+      "count": 4
+    }
+  ]
+}

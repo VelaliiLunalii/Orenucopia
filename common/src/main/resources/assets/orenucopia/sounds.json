@@ -1,0 +1,14 @@
+{
+  "chime": {
+    "sounds": ["orenucopia:chime"],
+    "subtitle": "subtitle.orenucopia.chime"
+  },
+  "crumble": {
+    "sounds": ["orenucopia:crumble"],
+    "subtitle": "subtitle.orenucopia.crumble"
+  },
+  "metal_hammer": {
+    "sounds": ["orenucopia:metal_hammer"],
+    "subtitle": "subtitle.orenucopia.metal_hammer"
+  }
+}

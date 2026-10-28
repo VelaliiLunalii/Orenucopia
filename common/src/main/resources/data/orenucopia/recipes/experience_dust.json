@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "orenucopia:condensed_experience"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "orenucopia:experience_dust"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "block.orenucopia.iron_outcrop": "Iron Outcrop",
+  "block.orenucopia.redstone_outcrop": "Redstone Outcrop",
+  "block.orenucopia.lapis_outcrop": "Lapis Lazuli Outcrop",
+  "block.orenucopia.gold_outcrop": "Gold Outcrop",
+  "block.orenucopia.diamond_outcrop": "Diamond Outcrop",
+  "block.orenucopia.copper_outcrop": "Copper Outcrop",
+  "block.orenucopia.coal_outcrop": "Coal Outcrop",
+  "block.orenucopia.emerald_outcrop": "Emerald Outcrop",
+
+  "item.orenucopia.raw_iron_nugget": "Raw Iron Nugget",
+  "item.orenucopia.redstone_nugget": "Redstone Nugget",
+  "item.orenucopia.lapis_nugget": "Lapis Lazuli Nugget",
+  "item.orenucopia.raw_gold_nugget": "Raw Gold Nugget",
+  "item.orenucopia.diamond_nugget": "Diamond Nugget",
+  "item.orenucopia.raw_copper_nugget": "Raw Copper Nugget",
+  "item.orenucopia.coal_nugget": "Coal Nugget",
+  "item.orenucopia.emerald_nugget": "Emerald Nugget",
+
+  "item.orenucopia.aurichalcite_chunk": "Aurichalcite Chunk",
+  "item.orenucopia.cuprite_chunk": "Cuprite Chunk",
+  "item.orenucopia.lazulite_chunk": "Lazulite Chunk",
+  "item.orenucopia.lazurite_chunk": "Lazurite Chunk",
+  "item.orenucopia.peridotite_chunk": "Peridotite Chunk",
+  "item.orenucopia.pyrite_chunk": "Pyrite Chunk",
+  "item.orenucopia.coal_chunk": "Coal Chunk",
+  "item.orenucopia.tumbaga_chunk": "Tumbaga Chunk",
+  "item.orenucopia.verdanite_chunk": "Verdanite Chunk",
+
+  "item.orenucopia.experience_dust": "Experience Dust",
+  "item.orenucopia.condensed_experience": "Condensed Experience",
+  "item.orenucopia.rock_candy": "Rock Candy",
+  "item.orenucopia.scraps": "Scraps",
+  "item.orenucopia.tourmaline": "Tourmaline",
+  "item.orenucopia.blank_tourmaline": "Blank Tourmaline",
+
+  "item.orenucopia.ore.description": "Can be broken down with a pickaxe",
+  "item.orenucopia.scraps.description": "Apply onto tools and gear",
+  "item.orenucopia.tourmaline.description.1": "Slot into tools",
+  "item.orenucopia.tourmaline.description.2": "Remove with shears",
+  "item.orenucopia.blank_tourmaline.description": "Revitalize by applying an experience dust",
+
+  "enchantment.orenucopia.prospecting": "Prospecting",
+
+  "advancement.orenucopia.coal_chunk": "A diamond in the rough",
+  "advancement.orenucopia.coal_chunk.desc": "Acquire a Coal Chunk",
+  "advancement.orenucopia.transgender_tourmaline": "Just a misunderstood little chicken fetus in an egg",
+  "advancement.orenucopia.transgender_tourmaline.desc": "Acquire a transgender themed Tourmaline",
+  "advancement.orenucopia.lesbian_tourmaline": "Oh yes, I'm an ally!",
+  "advancement.orenucopia.lesbian_tourmaline.desc": "Acquire a lesbian themed Tourmaline",
+  "advancement.orenucopia.non_binary_tourmaline": "01001110 01101111 00001010",
+  "advancement.orenucopia.non_binary_tourmaline.desc": "Acquire a non-binary themed Tourmaline",
+  "advancement.orenucopia.all_tourmaline": "After all these years, finally I have them all",
+  "advancement.orenucopia.all_tourmaline.desc": "Acquire a all themed Tourmalines",
+  "advancement.orenucopia.any_tourmaline": "Mine the rainbow",
+  "advancement.orenucopia.any_tourmaline.desc": "Acquire any Tourmaline",
+
+  "advancement.orenucopia.gay_tourmaline": "Reality's gay!",
+  "advancement.orenucopia.gay_tourmaline.desc": "Acquire a gay themed Tourmaline",
+
+  "subtitle.orenucopia.chime": "Chime",
+  "subtitle.orenucopia.crumble": "Crumble",
+  "subtitle.orenucopia.metal_hammer": "Metallic bang",
+
+  "creative_mode_tab.orenucopia.orenucopia_tab": "Orenucopia"
+}

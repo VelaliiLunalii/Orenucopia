@@ -1,0 +1,12 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "minecraft:quartz"
+  },
+  "results": [
+    {
+      "item": "orenucopia:quartz_nugget",
+      "count": 4
+    }
+  ]
+}

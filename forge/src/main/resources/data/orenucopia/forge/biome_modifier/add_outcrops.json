@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "orenucopia:ore_outcrop",
+  "step": "underground_ores"
+}

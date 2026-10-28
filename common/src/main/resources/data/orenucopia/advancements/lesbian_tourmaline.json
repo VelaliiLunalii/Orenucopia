@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:story/root",
+  "display": {
+    "icon": {
+      "item": "orenucopia:tourmaline",
+      "nbt": "{Tourmaline:lesbian}"
+    },
+    "title": {
+      "translate": "advancement.orenucopia.lesbian_tourmaline",
+      "color": "#EF7627"
+    },
+    "description": {
+      "translate": "advancement.orenucopia.lesbian_tourmaline.desc",
+      "color": "#B55690"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_lesbian_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:lesbian}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lesbian_tourmaline"
+    ]
+  ]
+}

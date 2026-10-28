@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:story/root",
+  "display": {
+    "icon": {
+      "item": "orenucopia:tourmaline",
+      "nbt": "{Tourmaline:non_binary}"
+    },
+    "title": {
+      "translate": "advancement.orenucopia.non_binary_tourmaline",
+      "color": "#fcf434"
+    },
+    "description": {
+      "translate": "advancement.orenucopia.non_binary_tourmaline.desc",
+      "color": "#9c59d1"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_non_binary_tourmaline": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "orenucopia:tourmaline"
+            ],
+            "nbt": "{Tourmaline:non_binary}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_non_binary_tourmaline"
+    ]
+  ]
+}

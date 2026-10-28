@@ -1,0 +1,311 @@
+{
+  "variants": {
+    "age=0,facing=up,rotation_facing=east": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up"
+    },
+    "age=0,facing=up,rotation_facing=west": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "y": 90
+    },
+    "age=0,facing=up,rotation_facing=north": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "y": 180
+    },
+    "age=0,facing=up,rotation_facing=south": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "y": 270
+    },
+
+    "age=0,facing=down,rotation_facing=east": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "x": 180
+    },
+    "age=0,facing=down,rotation_facing=west": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "x": 180,
+      "y": 90
+    },
+    "age=0,facing=down,rotation_facing=north": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "x": 180,
+      "y": 180
+    },
+    "age=0,facing=down,rotation_facing=south": {
+      "model": "orenucopia:block/seeded_iron_outcrop_up",
+      "x": 180,
+      "y": 270
+    },
+
+    "age=0,facing=north,rotation_facing=up": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north"
+    },
+    "age=0,facing=north,rotation_facing=down": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north"
+    },
+    "age=0,facing=north,rotation_facing=east": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north"
+    },
+    "age=0,facing=north,rotation_facing=west": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north"
+    },
+
+    "age=0,facing=south,rotation_facing=up": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north",
+      "y": 180
+    },
+    "age=0,facing=south,rotation_facing=down": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north",
+      "y": 180
+    },
+    "age=0,facing=south,rotation_facing=east": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north",
+      "y": 180
+    },
+    "age=0,facing=south,rotation_facing=west": {
+      "model": "orenucopia:block/seeded_iron_outcrop_north",
+      "y": 180
+    },
+
+    "age=0,facing=east,rotation_facing=up": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east"
+    },
+    "age=0,facing=east,rotation_facing=down": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "x": 90
+    },
+    "age=0,facing=east,rotation_facing=north": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "x": 180
+    },
+    "age=0,facing=east,rotation_facing=south": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "x": 270
+    },
+
+    "age=0,facing=west,rotation_facing=up": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "y": 180
+    },
+    "age=0,facing=west,rotation_facing=down": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "y": 180,
+      "x": 90
+    },
+    "age=0,facing=west,rotation_facing=north": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "y": 180,
+      "x": 180
+    },
+    "age=0,facing=west,rotation_facing=south": {
+      "model": "orenucopia:block/seeded_iron_outcrop_east",
+      "y": 180,
+      "x": 270
+    },
+
+
+    "age=1,facing=up,rotation_facing=east": {
+      "model": "orenucopia:block/small_iron_outcrop_up"
+    },
+    "age=1,facing=up,rotation_facing=west": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "y": 90
+    },
+    "age=1,facing=up,rotation_facing=north": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "y": 180
+    },
+    "age=1,facing=up,rotation_facing=south": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "y": 270
+    },
+
+    "age=1,facing=down,rotation_facing=east": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "x": 180
+    },
+    "age=1,facing=down,rotation_facing=west": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "x": 180,
+      "y": 90
+    },
+    "age=1,facing=down,rotation_facing=north": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "x": 180,
+      "y": 180
+    },
+    "age=1,facing=down,rotation_facing=south": {
+      "model": "orenucopia:block/small_iron_outcrop_up",
+      "x": 180,
+      "y": 270
+    },
+
+    "age=1,facing=north,rotation_facing=up": {
+      "model": "orenucopia:block/small_iron_outcrop_north_1"
+    },
+    "age=1,facing=north,rotation_facing=down": {
+      "model": "orenucopia:block/small_iron_outcrop_north_2"
+    },
+    "age=1,facing=north,rotation_facing=east": {
+      "model": "orenucopia:block/small_iron_outcrop_north_3"
+    },
+    "age=1,facing=north,rotation_facing=west": {
+      "model": "orenucopia:block/small_iron_outcrop_north_4"
+    },
+
+    "age=1,facing=south,rotation_facing=up": {
+      "model": "orenucopia:block/small_iron_outcrop_north_1",
+      "y": 180
+    },
+    "age=1,facing=south,rotation_facing=down": {
+      "model": "orenucopia:block/small_iron_outcrop_north_2",
+      "y": 180
+    },
+    "age=1,facing=south,rotation_facing=east": {
+      "model": "orenucopia:block/small_iron_outcrop_north_3",
+      "y": 180
+    },
+    "age=1,facing=south,rotation_facing=west": {
+      "model": "orenucopia:block/small_iron_outcrop_north_4",
+      "y": 180
+    },
+
+    "age=1,facing=east,rotation_facing=up": {
+      "model": "orenucopia:block/small_iron_outcrop_east"
+    },
+    "age=1,facing=east,rotation_facing=down": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "x": 90
+    },
+    "age=1,facing=east,rotation_facing=north": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "x": 180
+    },
+    "age=1,facing=east,rotation_facing=south": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "x": 270
+    },
+
+    "age=1,facing=west,rotation_facing=up": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "y": 180
+    },
+    "age=1,facing=west,rotation_facing=down": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "y": 180,
+      "x": 90
+    },
+    "age=1,facing=west,rotation_facing=north": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "y": 180,
+      "x": 180
+    },
+    "age=1,facing=west,rotation_facing=south": {
+      "model": "orenucopia:block/small_iron_outcrop_east",
+      "y": 180,
+      "x": 270
+    },
+
+
+    "age=2,facing=up,rotation_facing=east": {
+      "model": "orenucopia:block/iron_outcrop_up"
+    },
+    "age=2,facing=up,rotation_facing=west": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "y": 90
+    },
+    "age=2,facing=up,rotation_facing=north": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "y": 180
+    },
+    "age=2,facing=up,rotation_facing=south": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "y": 270
+    },
+
+    "age=2,facing=down,rotation_facing=east": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "x": 180
+    },
+    "age=2,facing=down,rotation_facing=west": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "x": 180,
+      "y": 90
+    },
+    "age=2,facing=down,rotation_facing=north": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "x": 180,
+      "y": 180
+    },
+    "age=2,facing=down,rotation_facing=south": {
+      "model": "orenucopia:block/iron_outcrop_up",
+      "x": 180,
+      "y": 270
+    },
+
+    "age=2,facing=north,rotation_facing=up": {
+      "model": "orenucopia:block/iron_outcrop_north_1"
+    },
+    "age=2,facing=north,rotation_facing=down": {
+      "model": "orenucopia:block/iron_outcrop_north_2"
+    },
+    "age=2,facing=north,rotation_facing=east": {
+      "model": "orenucopia:block/iron_outcrop_north_3"
+    },
+    "age=2,facing=north,rotation_facing=west": {
+      "model": "orenucopia:block/iron_outcrop_north_4"
+    },
+
+    "age=2,facing=south,rotation_facing=up": {
+      "model": "orenucopia:block/iron_outcrop_north_1",
+      "y": 180
+    },
+    "age=2,facing=south,rotation_facing=down": {
+      "model": "orenucopia:block/iron_outcrop_north_2",
+      "y": 180
+    },
+    "age=2,facing=south,rotation_facing=east": {
+      "model": "orenucopia:block/iron_outcrop_north_3",
+      "y": 180
+    },
+    "age=2,facing=south,rotation_facing=west": {
+      "model": "orenucopia:block/iron_outcrop_north_4",
+      "y": 180
+    },
+
+    "age=2,facing=east,rotation_facing=up": {
+      "model": "orenucopia:block/iron_outcrop_east"
+    },
+    "age=2,facing=east,rotation_facing=down": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "x": 90
+    },
+    "age=2,facing=east,rotation_facing=north": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "x": 180
+    },
+    "age=2,facing=east,rotation_facing=south": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "x": 270
+    },
+
+    "age=2,facing=west,rotation_facing=up": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "y": 180
+    },
+    "age=2,facing=west,rotation_facing=down": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "y": 180,
+      "x": 90
+    },
+    "age=2,facing=west,rotation_facing=north": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "y": 180,
+      "x": 180
+    },
+    "age=2,facing=west,rotation_facing=south": {
+      "model": "orenucopia:block/iron_outcrop_east",
+      "y": 180,
+      "x": 270
+    }
+  }
+}

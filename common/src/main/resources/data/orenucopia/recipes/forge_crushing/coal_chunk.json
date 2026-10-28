@@ -1,0 +1,16 @@
+{
+  "type": "orenucopia:forge_crushing",
+  "ingredient": {
+    "item": "orenucopia:coal_chunk"
+  },
+  "results": [
+    {
+      "item": "minecraft:coal",
+      "count": 6
+    },
+    {
+      "item": "minecraft:diamond",
+      "count": 2
+    }
+  ]
+}
