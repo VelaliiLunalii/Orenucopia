@@ -3,7 +3,7 @@
     "age=0,facing=up,rotation_facing=east": {
       "model": "orenucopia:block/seeded_redstone_outcrop_up"
     },
-    "vfacing=up,rotation_facing=west": {
+    "age=0,facing=up,rotation_facing=west": {
       "model": "orenucopia:block/seeded_redstone_outcrop_up",
       "y": 90
     },
