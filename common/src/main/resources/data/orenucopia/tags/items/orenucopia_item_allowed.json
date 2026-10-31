@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:raw_iron",
+    "minecraft:redstone",
+    "minecraft:lapis_lazuli",
+    "minecraft:raw_gold",
+    "minecraft:diamond",
+    "minecraft:raw_copper",
+    "minecraft:coal",
+    "minecraft:emerald",
+    "minecraft:quartz",
+    "orenucopia:coal_chunk",
+    "orenucopia:cuprite_chunk",
+    "orenucopia:lazulite_chunk",
+    "orenucopia:lazurite_chunk",
+    "orenucopia:peridotite_chunk",
+    "orenucopia:pyrite_chunk",
+    "orenucopia:tumbaga_chunk",
+    "orenucopia:verdanite_chunk",
+    "orenucopia:aurichalcite_chunk",
+    "orenucopia:condensed_experience"
+  ]
+}

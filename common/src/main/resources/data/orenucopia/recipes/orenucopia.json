@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "tag": "orenucopia:minerals"
+    },
+    "H": {
+      "item": "minecraft:goat_horn"
+    }
+  },
+  "pattern": [
+    " I ",
+    "HMI",
+    "II "
+  ],
+  "result": {
+    "item": "orenucopia:orenucopia"
+  }
+}

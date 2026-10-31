@@ -152,6 +152,12 @@ public class CommonClass {
     public static BlankTourmalineItem BLANK_TOURMALINE;
     public static final Supplier<BlankTourmalineItem> BLANK_TOURMALINE_SUPPLIER = () -> new BlankTourmalineItem(new Item.Properties());
 
+
+    public static OrenucopiaItem ORENUCOPIA;
+    public static final Supplier<OrenucopiaItem> ORENUCOPIA_SUPPLIER = () -> new OrenucopiaItem(new Item.Properties().stacksTo(1));
+
+
+
     //--------------------------------------------Particles------------------------------------------------------------
 
     public static SimpleParticleType TRANSGENDER_PARTICLE;

@@ -81,7 +81,7 @@ public class Orenucopia {
             CREATIVE_MODE_TABS.register("orenucopia_tab", () ->
                     CreativeModeTab.builder()
                             .title(Component.translatable("creative_mode_tab.orenucopia.orenucopia_tab"))
-                            .icon(() -> new ItemStack(CommonClass.VERDANITE_CHUNK))
+                            .icon(OrenucopiaItem::getFilledOrenucopia)
                             .displayItems((parameters, output) -> {
                                 output.accept(CommonClass.RAW_IRON_NUGGET);
                                 output.accept(CommonClass.REDSTONE_NUGGET);
@@ -108,6 +108,8 @@ public class Orenucopia {
                                 output.accept(CommonClass.ROCK_CANDY);
                                 output.accept(CommonClass.SCRAPS);
                                 output.accept(CommonClass.BLANK_TOURMALINE);
+
+                                output.accept(CommonClass.ORENUCOPIA);
                             })
                             .build()
             );
@@ -197,12 +199,14 @@ public class Orenucopia {
     public static final RegistryObject<TourmalineItem> TOURMALINE =
             ITEMS.register("tourmaline", CommonClass.TOURMALINE_SUPPLIER);
 
+    public static final RegistryObject<OrenucopiaItem> ORENUCOPIA =
+            ITEMS.register("orenucopia", CommonClass.ORENUCOPIA_SUPPLIER);
+
     public static final RegistryObject<RecipeType<?>> FORGE_CRUSHING_TYPE =
             RECIPE_TYPES.register("forge_crushing", () -> ForgeCrushingRecipe.Type.INSTANCE);
 
     public static final RegistryObject<RecipeSerializer<?>> FORGE_CRUSHING_SERIALIZER =
             RECIPE_SERIALIZERS.register("forge_crushing", () -> ForgeCrushingRecipe.Serializer.INSTANCE);
-
 
     public static final RegistryObject<SoundEvent> CHIME =
             SOUND_EVENTS.register("chime", CommonClass.CHIME_SUPPLIER);
@@ -282,6 +286,8 @@ public class Orenucopia {
             CommonClass.BLANK_TOURMALINE = BLANK_TOURMALINE.get();
             CommonClass.TOURMALINE = TOURMALINE.get();
 
+            CommonClass.ORENUCOPIA = ORENUCOPIA.get();
+
             CommonClass.LESBIAN_PARTICLE= LESBIAN_PARTICLE.get();
             CommonClass.TRANSGENDER_PARTICLE= TRANSGENDER_PARTICLE.get();
             CommonClass.BISEXUAL_PARTICLE= BISEXUAL_PARTICLE.get();
@@ -346,6 +352,8 @@ public class Orenucopia {
                 registerBisexualTourmalineProperty(CommonClass.TOURMALINE);
                 registerAsexualTourmalineProperty(CommonClass.TOURMALINE);
                 registerNonBinaryTourmalineProperty(CommonClass.TOURMALINE);
+
+                registerOrenucopiaItemProperty(CommonClass.ORENUCOPIA);
             });
         }
 
@@ -400,6 +408,15 @@ public class Orenucopia {
                 new ResourceLocation(Constants.MOD_ID, "non_binary"),
                 (stack, level, entity, seed) -> {
                     return TourmalineItem.getTourmaline(stack).equals("non_binary") ? 1 : 0;
+                }
+        );
+    }
+
+    private static void registerOrenucopiaItemProperty(Item item) {
+        ItemProperties.register(item,
+                new ResourceLocation(Constants.MOD_ID, "orenucopia"),
+                (stack, level, entity, seed) -> {
+                    return OrenucopiaItem.hasContent(stack) ? 1 : 0;
                 }
         );
     }

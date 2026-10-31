@@ -1,5 +1,6 @@
 package io.github.velaliilunalii.orenucopia;
 
+import io.github.velaliilunalii.orenucopia.item.OrenucopiaItem;
 import io.github.velaliilunalii.orenucopia.item.TourmalineItem;
 import io.github.velaliilunalii.orenucopia.recipe.ForgeCrushingRecipe;
 import io.github.velaliilunalii.orenucopia.util.ModLootTableModifiers;
@@ -10,6 +11,9 @@ import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
@@ -122,7 +126,7 @@ public class Orenucopia implements ModInitializer {
                 new ResourceLocation(Constants.MOD_ID, "orenucopia_tab"),
                 CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
                         .title(Component.translatable("creative_mode_tab.orenucopia.orenucopia_tab"))
-                        .icon(() -> new ItemStack(VERDANITE_CHUNK))
+                        .icon(OrenucopiaItem::getFilledOrenucopia)
                         .displayItems((parameters, output) -> {
                             // ========== CONTAINERS ==========
                             output.accept(CommonClass.RAW_IRON_NUGGET);
@@ -150,6 +154,8 @@ public class Orenucopia implements ModInitializer {
                             output.accept(CommonClass.ROCK_CANDY);
                             output.accept(CommonClass.SCRAPS);
                             output.accept(CommonClass.BLANK_TOURMALINE);
+
+                            output.accept(CommonClass.ORENUCOPIA);
                         })
                         .build()
         );
@@ -255,6 +261,10 @@ public class Orenucopia implements ModInitializer {
         registerBisexualTourmalineProperty(TOURMALINE);
         registerAsexualTourmalineProperty(TOURMALINE);
         registerNonBinaryTourmalineProperty(TOURMALINE);
+
+        ORENUCOPIA = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "orenucopia"),
+                ORENUCOPIA_SUPPLIER.get());
+        registerOrenucopiaItemProperty(ORENUCOPIA);
     }
 
     public static void registerRecipes(){
@@ -332,6 +342,15 @@ public class Orenucopia implements ModInitializer {
                 new ResourceLocation(Constants.MOD_ID, "non_binary"),
                 (stack, level, entity, seed) -> {
                     return TourmalineItem.getTourmaline(stack).equals("non_binary") ? 1 : 0;
+                }
+        );
+    }
+
+    private static void registerOrenucopiaItemProperty(Item item) {
+        ItemProperties.register(item,
+                new ResourceLocation(Constants.MOD_ID, "orenucopia"),
+                (stack, level, entity, seed) -> {
+                    return OrenucopiaItem.hasContent(stack) ? 1 : 0;
                 }
         );
     }

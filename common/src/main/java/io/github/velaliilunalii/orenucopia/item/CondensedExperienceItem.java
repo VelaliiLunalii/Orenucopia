@@ -41,7 +41,7 @@ public class CondensedExperienceItem extends Item {
                 new LootInstance(CommonClass.TUMBAGA_CHUNK, 1, 1, 2),
                 new LootInstance(CommonClass.VERDANITE_CHUNK, 1, 1, 2),
                 new LootInstance(CommonClass.AURICHALCITE_CHUNK, 1, 1, 3),
-                new LootInstance(CommonClass.BLANK_TOURMALINE, 2, 1, 1)
+                new LootInstance(CommonClass.BLANK_TOURMALINE, 1, 1, 1)
         );
 
         int totalWeight = lootInstances.stream().map(LootInstance::getWeight).reduce(0, Integer::sum);
