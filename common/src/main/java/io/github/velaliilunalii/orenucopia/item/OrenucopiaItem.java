@@ -230,15 +230,17 @@ public class OrenucopiaItem extends Item {
                 Level level = player.level();
                 ListTag listtag = compoundtag.getList("Items", 10);
 
-                SimpleContainer inputContainer = new SimpleContainer(MAX_STACK_SIZE);
-                SimpleContainer outputContainer = new SimpleContainer(MAX_STACK_SIZE*3);
+
+
 
                 for(int i = 0; i < listtag.size(); ++i) {
                     CompoundTag compoundtag1 = listtag.getCompound(i);
                     ItemStack itemstack = ItemStack.of(compoundtag1);
 
                     for (int k = 0; k < itemstack.getCount(); k++) {
+                        SimpleContainer inputContainer = new SimpleContainer(MAX_STACK_SIZE);
                         inputContainer.addItem(itemstack.copy());
+                        SimpleContainer outputContainer = new SimpleContainer(MAX_STACK_SIZE*3);
 
                         Optional<ForgeCrushingRecipe> recipe = level.getRecipeManager()
                                 .getRecipeFor(ForgeCrushingRecipe.Type.INSTANCE, inputContainer, level);
@@ -246,13 +248,14 @@ public class OrenucopiaItem extends Item {
                         if (recipe.isPresent()) {
                             ForgeCrushingRecipe forgeRecipe = recipe.get();
 
-                            if (forgeRecipe.matches(inputContainer, level))
+                            if (forgeRecipe.matches(inputContainer, level)) {
                                 applyRecipe(inputContainer, outputContainer, itemstack, forgeRecipe);
-
-                            for (int j = 0; j < outputContainer.getContainerSize(); j++) {
-                                ItemStack newStack = outputContainer.removeItem(j, outputContainer.getItem(j).getCount());
-                                player.drop(newStack, true);
+                                for (int j = 0; j < outputContainer.getContainerSize(); j++) {
+                                    ItemStack newStack = outputContainer.removeItem(j, outputContainer.getItem(j).getCount());
+                                    player.drop(newStack, true);
+                                }
                             }
+
                         } else if (itemstack.is(CommonClass.CONDENSED_EXPERIENCE)) {
                             ItemStack givenStack = CondensedExperienceItem.getLoot();
                             player.drop(givenStack, true);
