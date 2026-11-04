@@ -1,12 +1,13 @@
 ![Orenucopia in pride colors over a screenshot of a minecraft cave with glowing ore outcrops on the bottom and top](https://cdn.modrinth.com/data/cached_images/44ff15a8fdc194d37cc4149e079d78858a2cdf4f.webp)
 
 Orenucopia is a mod focused on expanding the caving experience by adding new 3d ore outcrops on world generation as well as new and rare minerals to collect.\
-Find the new "prospecting" enchantment for pickaxes to dive into the quality of life (QoL) and the mod's mineral system.
+Find the new "prospecting" enchantment for pickaxes to dive into the quality of life (QoL) and the mod's mineral system.\
+The mod is available on modrinth: https://modrinth.com/mod/orenucopia.
 
 
 ## Features
 
-- 8 new blocks with at least 2 size variants each.
+- 10 new blocks with at least 2 size variants each.
 - 9 minerals (items) to collect from outcrops and ores.
 - A new enchantment greatly increasing the chances to obtain minerals.
 - A scrapping mechanic to recycle unwanted gear and tools and earn back scraps to repair or reinforce any item with durability.
@@ -27,14 +28,13 @@ And lastly, feel free to use in your modpacks!
 ## Upcoming
 
 The rate at which I can make these updates will depend on my available free time and how much interest there is in my mod. So if you want to help me out and see updates faster please share this mods around!
-- Nether quartz and nether gold ore outcrops.
-- The orenucopia itself as a QoL item for when you lack space when caving and want a quick way to break all your ores, minerals and condensed experience.
 - Themed outcrops with fun mechanics to spice up caving even more.
 - More pride themed tourmalines!
 - New particle effects for tourmalines.
 - Inventory animations.
 - More compatibilities as I see fit.
 - Some retextures here and there.
+- Advancements tab.
 - Configs.
 
 
