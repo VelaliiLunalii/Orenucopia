@@ -35,73 +35,63 @@ public class CommonClass {
             new EchoTreasureBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE));
 
     public static Block IRON_OUTCROP;
-    public static Block REDSTONE_OUTCROP;
-    public static Block LAPIS_OUTCROP;
-    public static Block GOLD_OUTCROP;
-    public static Block DIAMOND_OUTCROP;
-    public static Block COPPER_OUTCROP;
-    public static Block COAL_OUTCROP;
-    public static Block EMERALD_OUTCROP;
-
     public static final Supplier<Block> IRON_OUTCROP_SUPPLIER = () ->
             new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block REDSTONE_OUTCROP;
     public static final Supplier<Block> REDSTONE_OUTCROP_SUPPLIER = () ->
             new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_BLOCK).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block LAPIS_OUTCROP;
     public static final Supplier<Block> LAPIS_OUTCROP_SUPPLIER = () ->
             new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block GOLD_OUTCROP;
     public static final Supplier<Block> GOLD_OUTCROP_SUPPLIER = () ->
             new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block DIAMOND_OUTCROP;
     public static final Supplier<Block> DIAMOND_OUTCROP_SUPPLIER = () ->
             new SmallOutcropBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block COPPER_OUTCROP;
     public static final Supplier<Block> COPPER_OUTCROP_SUPPLIER = () ->
             new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block COAL_OUTCROP;
     public static final Supplier<Block> COAL_OUTCROP_SUPPLIER = () ->
             new SmallOutcropBlock(BlockBehaviour.Properties.copy(Blocks.COAL_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
-
+    public static Block EMERALD_OUTCROP;
     public static final Supplier<Block> EMERALD_OUTCROP_SUPPLIER = () ->
             new SmallOutcropBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
+    public static Block NETHER_GOLD_OUTCROP;
+    public static final Supplier<Block> NETHER_GOLD_OUTCROP_SUPPLIER = () ->
+            new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_GOLD_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
+    public static Block QUARTZ_OUTCROP;
+    public static final Supplier<Block> QUARTZ_OUTCROP_SUPPLIER = () ->
+            new LargeOutcropBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_QUARTZ_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
 
     public static OutcropSeedItem RAW_IRON_NUGGET;
     public static final Supplier<OutcropSeedItem> RAW_IRON_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem REDSTONE_NUGGET;
     public static final Supplier<OutcropSeedItem> REDSTONE_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem LAPIS_NUGGET;
     public static final Supplier<OutcropSeedItem> LAPIS_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem RAW_GOLD_NUGGET;
     public static final Supplier<OutcropSeedItem> RAW_GOLD_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem DIAMOND_NUGGET;
     public static final Supplier<OutcropSeedItem> DIAMOND_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem RAW_COPPER_NUGGET;
     public static final Supplier<OutcropSeedItem> RAW_COPPER_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem COAL_NUGGET;
     public static final Supplier<OutcropSeedItem> COAL_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
     public static OutcropSeedItem EMERALD_NUGGET;
     public static final Supplier<OutcropSeedItem> EMERALD_NUGGET_SUPPLIER = () ->
             new OutcropSeedItem(new Item.Properties());
-
-    public static Item QUARTZ_NUGGET;
-    public static final Supplier<Item> QUARTZ_NUGGET_SUPPLIER = () ->
-            new Item(new Item.Properties());
+    public static OutcropSeedItem QUARTZ_NUGGET;
+    public static final Supplier<OutcropSeedItem> QUARTZ_NUGGET_SUPPLIER = () ->
+            new OutcropSeedItem(new Item.Properties());
 
     public static Map<OutcropSeedItem, Block> SEED_BLOCK_MAP = new HashMap<>();
 
@@ -110,11 +100,12 @@ public class CommonClass {
     public static final Block[] IRON_OUTCROP_BASES = {Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.RAW_IRON_BLOCK};
     public static final Block[] REDSTONE_OUTCROP_BASES = {Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE};
     public static final Block[] LAPIS_OUTCROP_BASES = {Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE};
-    public static final Block[] GOLD_OUTCROP_BASES = {Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.RAW_GOLD_BLOCK};
+    public static final Block[] GOLD_OUTCROP_BASES = {Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.NETHER_GOLD_ORE, Blocks.RAW_GOLD_BLOCK};
     public static final Block[] DIAMOND_OUTCROP_BASES = {Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE};
     public static final Block[] COPPER_OUTCROP_BASES = {Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.RAW_COPPER_BLOCK};
     public static final Block[] COAL_OUTCROP_BASES = {Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE};
     public static final Block[] EMERALD_OUTCROP_BASES = {Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE};
+    public static final Block[] QUARTZ_OUTCROP_BASES = {Blocks.NETHER_QUARTZ_ORE};
 
     public static Item AURICHALCITE_CHUNK;
     public static final Supplier<Item> AURICHALCITE_CHUNK_SUPPLIER = () -> new Item(new Item.Properties());
@@ -151,7 +142,6 @@ public class CommonClass {
     public static final Supplier<TourmalineItem> TOURMALINE_SUPPLIER = () -> new TourmalineItem(new Item.Properties());
     public static BlankTourmalineItem BLANK_TOURMALINE;
     public static final Supplier<BlankTourmalineItem> BLANK_TOURMALINE_SUPPLIER = () -> new BlankTourmalineItem(new Item.Properties());
-
 
     public static OrenucopiaItem ORENUCOPIA;
     public static final Supplier<OrenucopiaItem> ORENUCOPIA_SUPPLIER = () -> new OrenucopiaItem(new Item.Properties().stacksTo(1));
@@ -197,18 +187,16 @@ public class CommonClass {
 
     public static final ResourceLocation ABANDONED_MINESHAFT_STRUCTURE_CHEST_ID
             = new ResourceLocation("minecraft", "chests/abandoned_mineshaft");
-
     public static final ResourceLocation RUINED_PORTAL_STRUCTURE_CHEST_ID
             = new ResourceLocation("minecraft", "chests/ruined_portal");
-
     public static final ResourceLocation SIMPLE_DUNGEON_STRUCTURE_CHEST_ID
             = new ResourceLocation("minecraft", "chests/simple_dungeon");
-
     public static final ResourceLocation STRONGHOLD_LIBRARY_STRUCTURE_CHEST_ID
             = new ResourceLocation("minecraft", "chests/stronghold_library");
 
     public static void init() {
-        OUTCROPS = new Block[]{IRON_OUTCROP, REDSTONE_OUTCROP, LAPIS_OUTCROP, GOLD_OUTCROP, DIAMOND_OUTCROP, COPPER_OUTCROP, COAL_OUTCROP, EMERALD_OUTCROP};
+        OUTCROPS = new Block[]{IRON_OUTCROP, REDSTONE_OUTCROP, LAPIS_OUTCROP, GOLD_OUTCROP, DIAMOND_OUTCROP,
+                COPPER_OUTCROP, COAL_OUTCROP, EMERALD_OUTCROP, NETHER_GOLD_OUTCROP, QUARTZ_OUTCROP};
 
         SEED_BLOCK_MAP.put(RAW_IRON_NUGGET, IRON_OUTCROP);
         SEED_BLOCK_MAP.put(REDSTONE_NUGGET, REDSTONE_OUTCROP);
@@ -218,6 +206,7 @@ public class CommonClass {
         SEED_BLOCK_MAP.put(RAW_COPPER_NUGGET, COPPER_OUTCROP);
         SEED_BLOCK_MAP.put(COAL_NUGGET, COAL_OUTCROP);
         SEED_BLOCK_MAP.put(EMERALD_NUGGET, EMERALD_OUTCROP);
+        SEED_BLOCK_MAP.put(QUARTZ_NUGGET, QUARTZ_OUTCROP);
 
         BLOCK_PARTICLE_MAP.put("transgender", TRANSGENDER_PARTICLE);
         BLOCK_PARTICLE_MAP.put("lesbian", LESBIAN_PARTICLE);
@@ -244,6 +233,8 @@ public class CommonClass {
         if (block.is(COPPER_OUTCROP)) return COPPER_OUTCROP_BASES;
         if (block.is(COAL_OUTCROP)) return COAL_OUTCROP_BASES;
         if (block.is(EMERALD_OUTCROP)) return EMERALD_OUTCROP_BASES;
+        if (block.is(NETHER_GOLD_OUTCROP)) return GOLD_OUTCROP_BASES;
+        if (block.is(QUARTZ_OUTCROP)) return QUARTZ_OUTCROP_BASES;
         return null;
     }
 

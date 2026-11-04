@@ -13,12 +13,19 @@ import static io.github.velaliilunalii.orenucopia.Constants.MOD_ID;
 public class ModWorldGeneration {
     public static final ResourceKey<PlacedFeature> ORE_OUTCROP_PLACED_KEY =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(MOD_ID, "ore_outcrop"));
+    public static final ResourceKey<PlacedFeature> NETHER_ORE_OUTCROP_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(MOD_ID, "nether_ore_outcrop"));
 
     public static void registerWorldGeneration() {
         BiomeModifications.addFeature(
                 BiomeSelectors.foundInOverworld(),
                 GenerationStep.Decoration.UNDERGROUND_ORES,
                 ORE_OUTCROP_PLACED_KEY
+        );
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInTheNether(),
+                GenerationStep.Decoration.UNDERGROUND_DECORATION,
+                NETHER_ORE_OUTCROP_PLACED_KEY
         );
     }
 }

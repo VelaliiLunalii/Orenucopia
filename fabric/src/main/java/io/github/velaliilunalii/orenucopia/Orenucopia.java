@@ -200,6 +200,8 @@ public class Orenucopia implements ModInitializer {
         COPPER_OUTCROP = registerBlock("copper_outcrop", COPPER_OUTCROP_SUPPLIER);
         COAL_OUTCROP = registerBlock("coal_outcrop", COAL_OUTCROP_SUPPLIER);
         EMERALD_OUTCROP = registerBlock("emerald_outcrop", EMERALD_OUTCROP_SUPPLIER);
+        NETHER_GOLD_OUTCROP = registerBlock("nether_gold_outcrop", NETHER_GOLD_OUTCROP_SUPPLIER);
+        QUARTZ_OUTCROP = registerBlock("quartz_outcrop", QUARTZ_OUTCROP_SUPPLIER);
     }
 
     public static void registerItems() {

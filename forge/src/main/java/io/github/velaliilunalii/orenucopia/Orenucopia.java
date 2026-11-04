@@ -4,6 +4,7 @@ import io.github.velaliilunalii.orenucopia.item.*;
 import io.github.velaliilunalii.orenucopia.particle.ColoredTerrainParticle;
 import io.github.velaliilunalii.orenucopia.recipe.ForgeCrushingRecipe;
 import io.github.velaliilunalii.orenucopia.world.ModWorldGenProvider;
+import io.github.velaliilunalii.orenucopia.world.NetherOreOutcropFeature;
 import io.github.velaliilunalii.orenucopia.world.OreOutcropFeature;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -73,6 +74,9 @@ public class Orenucopia {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ORE_OUTCROP =
             FEATURES.register("ore_outcrop", () -> new OreOutcropFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> NETHER_ORE_OUTCROP =
+            FEATURES.register("nether_ore_outcrop", () -> new NetherOreOutcropFeature(NoneFeatureConfiguration.CODEC));
+
 
     public static final RegistryObject<Enchantment> PROSPECTING_ENCHANTMENT =
             ENCHANTMENTS.register("prospecting", CommonClass.PROSPECTING_ENCHANTMENT_SUPPLIER);
@@ -141,6 +145,10 @@ public class Orenucopia {
             BLOCKS.register("coal_outcrop", CommonClass.COAL_OUTCROP_SUPPLIER);
     public static final RegistryObject<Block> EMERALD_OUTCROP =
             BLOCKS.register("emerald_outcrop", CommonClass.EMERALD_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> NETHER_GOLD_OUTCROP =
+            BLOCKS.register("nether_gold_outcrop", CommonClass.GOLD_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> QUARTZ_OUTCROP =
+            BLOCKS.register("quartz_outcrop", CommonClass.QUARTZ_OUTCROP_SUPPLIER);
 
     public static final RegistryObject<Block> ECHO_TREASURE_BLOCK =
             BLOCKS.register("echo_treasure_block", CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER);
@@ -161,7 +169,7 @@ public class Orenucopia {
             ITEMS.register("coal_nugget", CommonClass.COAL_NUGGET_SUPPLIER);
     public static final RegistryObject<OutcropSeedItem> EMERALD_NUGGET =
             ITEMS.register("emerald_nugget", CommonClass.EMERALD_NUGGET_SUPPLIER);
-    public static final RegistryObject<Item> QUARTZ_NUGGET =
+    public static final RegistryObject<OutcropSeedItem> QUARTZ_NUGGET =
             ITEMS.register("quartz_nugget", CommonClass.QUARTZ_NUGGET_SUPPLIER);
 
     public static final RegistryObject<Item> AURICHALCITE_CHUNK =
@@ -253,6 +261,8 @@ public class Orenucopia {
             CommonClass.COPPER_OUTCROP = COPPER_OUTCROP.get();
             CommonClass.COAL_OUTCROP = COAL_OUTCROP.get();
             CommonClass.EMERALD_OUTCROP = EMERALD_OUTCROP.get();
+            CommonClass.NETHER_GOLD_OUTCROP = NETHER_GOLD_OUTCROP.get();
+            CommonClass.QUARTZ_OUTCROP = QUARTZ_OUTCROP.get();
 
             CommonClass.ECHO_TREASURE_BLOCK = ECHO_TREASURE_BLOCK.get();
 
@@ -346,6 +356,7 @@ public class Orenucopia {
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.LAPIS_OUTCROP, RenderType.cutoutMipped());
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.REDSTONE_OUTCROP, RenderType.cutoutMipped());
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.EMERALD_OUTCROP, RenderType.cutoutMipped());
+                ItemBlockRenderTypes.setRenderLayer(CommonClass.NETHER_GOLD_OUTCROP, RenderType.cutoutMipped());
 
                 registerTransgenderTourmalineProperty(CommonClass.TOURMALINE);
                 registerLesbianTourmalineProperty(CommonClass.TOURMALINE);

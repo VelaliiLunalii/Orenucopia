@@ -20,6 +20,8 @@ public class OrenucopiaClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(LAPIS_OUTCROP, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(REDSTONE_OUTCROP, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(EMERALD_OUTCROP, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(NETHER_GOLD_OUTCROP, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(QUARTZ_OUTCROP, RenderType.cutoutMipped());
 
         ParticleFactoryRegistry.getInstance().register(
                 CommonClass.TRANSGENDER_PARTICLE,

@@ -114,7 +114,7 @@ public abstract class OutcropBlock extends Block implements SimpleWaterloggedBlo
                 double f = (double) blockPos.getZ() + randomSource.nextDouble();
                 level.addParticle(DustParticleOptions.REDSTONE, d, e, f, (double) 0.0F, (double) 0.0F, (double) 0.0F);
             }
-            if (blockState.is(GOLD_OUTCROP) || blockState.is(DIAMOND_OUTCROP) || blockState.is(EMERALD_OUTCROP)) {
+            if (blockState.is(GOLD_OUTCROP) || blockState.is(DIAMOND_OUTCROP) || blockState.is(EMERALD_OUTCROP) || blockState.is(NETHER_GOLD_OUTCROP)) {
                 double d = (double) blockPos.getX() + randomSource.nextDouble();
                 double e = (double) blockPos.getY() + randomSource.nextDouble();
                 double f = (double) blockPos.getZ() + randomSource.nextDouble();

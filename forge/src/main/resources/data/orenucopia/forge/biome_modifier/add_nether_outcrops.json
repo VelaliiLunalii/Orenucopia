@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "orenucopia:nether_ore_outcrop",
+  "step": "underground_decoration"
+}

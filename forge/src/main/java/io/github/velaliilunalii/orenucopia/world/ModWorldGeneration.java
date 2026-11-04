@@ -19,6 +19,9 @@ public class ModWorldGeneration {
     public static final ResourceKey<PlacedFeature> ORE_OUTCROP_PLACED_KEY =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(MOD_ID, "ore_outcrop"));
     public static final ResourceKey<BiomeModifier> ADD_OUTCROPS = registerKey("add_outcrops");
+    public static final ResourceKey<PlacedFeature> NETHER_ORE_OUTCROP_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(MOD_ID, "nether_ore_outcrop"));
+    public static final ResourceKey<BiomeModifier> ADD_NETHER_OUTCROPS = registerKey("add_nether_outcrops");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -28,6 +31,10 @@ public class ModWorldGeneration {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ORE_OUTCROP_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ADD_NETHER_OUTCROPS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_NETHER),
+                HolderSet.direct(placedFeatures.getOrThrow(NETHER_ORE_OUTCROP_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_DECORATION));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

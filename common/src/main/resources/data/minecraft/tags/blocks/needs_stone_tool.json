@@ -3,6 +3,8 @@
   "values": [
     "orenucopia:coal_outcrop",
     "orenucopia:copper_outcrop",
-    "orenucopia:iron_outcrop"
+    "orenucopia:iron_outcrop",
+    "orenucopia:nether_gold_outcrop",
+    "orenucopia:quartz_outcrop"
   ]
 }

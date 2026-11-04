@@ -16,11 +16,6 @@ public class CondensedExperienceItem extends Item {
         super($$0);
     }
 
-    public void appendHoverText(ItemStack $$0, Level $$1, List<Component> $$2, TooltipFlag $$3){
-        $$2.add(Component.translatable("item.orenucopia.ore.description").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
-        super.appendHoverText($$0, $$1, $$2, $$3);
-    }
-
     public static ItemStack getLoot(){
         Set<LootInstance> lootInstances = Set.of(
                 new LootInstance(Items.COAL, 4, 2, 4),

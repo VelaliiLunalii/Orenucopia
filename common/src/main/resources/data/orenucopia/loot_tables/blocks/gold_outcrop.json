@@ -180,6 +180,15 @@
                     }
                   ]
                 }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "orenucopia:gold_outcrop",
+                  "properties": {
+                    "age": "1"
+                  }
+                }
               ]
             },
             {
