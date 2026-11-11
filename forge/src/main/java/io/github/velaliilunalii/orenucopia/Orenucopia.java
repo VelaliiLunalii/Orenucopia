@@ -3,9 +3,7 @@ package io.github.velaliilunalii.orenucopia;
 import io.github.velaliilunalii.orenucopia.item.*;
 import io.github.velaliilunalii.orenucopia.particle.ColoredTerrainParticle;
 import io.github.velaliilunalii.orenucopia.recipe.ForgeCrushingRecipe;
-import io.github.velaliilunalii.orenucopia.world.ModWorldGenProvider;
-import io.github.velaliilunalii.orenucopia.world.NetherOreOutcropFeature;
-import io.github.velaliilunalii.orenucopia.world.OreOutcropFeature;
+import io.github.velaliilunalii.orenucopia.world.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -71,11 +69,10 @@ public class Orenucopia {
             DeferredRegister.create(ForgeRegistries.FEATURES, Constants.MOD_ID);
 
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> ORE_OUTCROP =
-            FEATURES.register("ore_outcrop", () -> new OreOutcropFeature(NoneFeatureConfiguration.CODEC));
-
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> NETHER_ORE_OUTCROP =
-            FEATURES.register("nether_ore_outcrop", () -> new NetherOreOutcropFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<OreOutcropConfiguration>> ORE_OUTCROP =
+            FEATURES.register("ore_outcrop", () -> new OreOutcropFeature(OreOutcropConfiguration.CODEC));
+    public static final RegistryObject<Feature<OreOutcropConfiguration>> NETHER_ORE_OUTCROP =
+            FEATURES.register("nether_ore_outcrop", () -> new OreOutcropFeature(OreOutcropConfiguration.CODEC));
 
 
     public static final RegistryObject<Enchantment> PROSPECTING_ENCHANTMENT =
@@ -357,6 +354,7 @@ public class Orenucopia {
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.REDSTONE_OUTCROP, RenderType.cutoutMipped());
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.EMERALD_OUTCROP, RenderType.cutoutMipped());
                 ItemBlockRenderTypes.setRenderLayer(CommonClass.NETHER_GOLD_OUTCROP, RenderType.cutoutMipped());
+                ItemBlockRenderTypes.setRenderLayer(CommonClass.QUARTZ_OUTCROP, RenderType.cutoutMipped());
 
                 registerTransgenderTourmalineProperty(CommonClass.TOURMALINE);
                 registerLesbianTourmalineProperty(CommonClass.TOURMALINE);

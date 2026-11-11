@@ -1,12 +1,16 @@
 package io.github.velaliilunalii.orenucopia.block;
 
-import io.github.velaliilunalii.orenucopia.CommonClass;
+import io.github.velaliilunalii.orenucopia.util.ModTags;
+import io.github.velaliilunalii.orenucopia.util.OutcropBlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -20,9 +24,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import static io.github.velaliilunalii.orenucopia.CommonClass.*;
@@ -150,7 +156,8 @@ public abstract class OutcropBlock extends Block implements SimpleWaterloggedBlo
         int max_age = getMaxAge();
 
         if (randomSource.nextFloat() < growthChance() && blockState.getValue(AGING) && age < max_age){
-            boolean test = CommonClass.isIn(getBaseForOutcrops(blockState), serverLevel.getBlockState(blockPos.relative(blockState.getValue(FACING).getOpposite())));
+            String[] outcrop_name = blockState.getBlock().getDescriptionId().split("\\.");
+            boolean test = serverLevel.getBlockState(blockPos.relative(blockState.getValue(FACING).getOpposite())).is(ModTags.Blocks.tag(outcrop_name[outcrop_name.length - 1].concat("_bases")));
             if (test || age < max_age - 1){
                 serverLevel.setBlock(blockPos, blockState.setValue(AGE, age + 1), 2);
             }

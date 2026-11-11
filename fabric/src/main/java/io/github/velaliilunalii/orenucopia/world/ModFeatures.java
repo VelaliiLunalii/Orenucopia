@@ -8,13 +8,11 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class ModFeatures {
-    public static final Feature<NoneFeatureConfiguration> ORE_OUTCROP = new OreOutcropFeature(NoneFeatureConfiguration.CODEC);
-    public static final Feature<NoneFeatureConfiguration> NETHER_ORE_OUTCROP = new NetherOreOutcropFeature(NoneFeatureConfiguration.CODEC);
-    public static final Feature<NoneFeatureConfiguration> ECHO_TREASURE_GEODE = new EchoTreasureGeodeFeature(NoneFeatureConfiguration.CODEC);
+    public static final Feature<OreOutcropConfiguration> ORE_OUTCROP = new OreOutcropFeature(OreOutcropConfiguration.CODEC);
+    public static final Feature<OreOutcropConfiguration> NETHER_ORE_OUTCROP = new OreOutcropFeature(OreOutcropConfiguration.CODEC);
 
     public static void registerModFeatures(){
         Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(Constants.MOD_ID, "ore_outcrop"), ORE_OUTCROP);
         Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(Constants.MOD_ID, "nether_ore_outcrop"), NETHER_ORE_OUTCROP);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(Constants.MOD_ID, "echo_treasure_geode"), ECHO_TREASURE_GEODE);
     }
 }

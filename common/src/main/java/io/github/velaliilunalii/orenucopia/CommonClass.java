@@ -5,10 +5,8 @@ import io.github.velaliilunalii.orenucopia.block.LargeOutcropBlock;
 import io.github.velaliilunalii.orenucopia.block.SmallOutcropBlock;
 import io.github.velaliilunalii.orenucopia.enchantment.ProspectingEnchantment;
 import io.github.velaliilunalii.orenucopia.item.*;
-import io.github.velaliilunalii.orenucopia.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +14,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -94,18 +91,6 @@ public class CommonClass {
             new OutcropSeedItem(new Item.Properties());
 
     public static Map<OutcropSeedItem, Block> SEED_BLOCK_MAP = new HashMap<>();
-
-    public static Block[] OUTCROPS;
-
-    public static final Block[] IRON_OUTCROP_BASES = {Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.RAW_IRON_BLOCK};
-    public static final Block[] REDSTONE_OUTCROP_BASES = {Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE};
-    public static final Block[] LAPIS_OUTCROP_BASES = {Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE};
-    public static final Block[] GOLD_OUTCROP_BASES = {Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.NETHER_GOLD_ORE, Blocks.RAW_GOLD_BLOCK};
-    public static final Block[] DIAMOND_OUTCROP_BASES = {Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE};
-    public static final Block[] COPPER_OUTCROP_BASES = {Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.RAW_COPPER_BLOCK};
-    public static final Block[] COAL_OUTCROP_BASES = {Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE};
-    public static final Block[] EMERALD_OUTCROP_BASES = {Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE};
-    public static final Block[] QUARTZ_OUTCROP_BASES = {Blocks.NETHER_QUARTZ_ORE};
 
     public static Item AURICHALCITE_CHUNK;
     public static final Supplier<Item> AURICHALCITE_CHUNK_SUPPLIER = () -> new Item(new Item.Properties());
@@ -195,9 +180,6 @@ public class CommonClass {
             = new ResourceLocation("minecraft", "chests/stronghold_library");
 
     public static void init() {
-        OUTCROPS = new Block[]{IRON_OUTCROP, REDSTONE_OUTCROP, LAPIS_OUTCROP, GOLD_OUTCROP, DIAMOND_OUTCROP,
-                COPPER_OUTCROP, COAL_OUTCROP, EMERALD_OUTCROP, NETHER_GOLD_OUTCROP, QUARTZ_OUTCROP};
-
         SEED_BLOCK_MAP.put(RAW_IRON_NUGGET, IRON_OUTCROP);
         SEED_BLOCK_MAP.put(REDSTONE_NUGGET, REDSTONE_OUTCROP);
         SEED_BLOCK_MAP.put(LAPIS_NUGGET, LAPIS_OUTCROP);
@@ -213,34 +195,6 @@ public class CommonClass {
         BLOCK_PARTICLE_MAP.put("bisexual", BISEXUAL_PARTICLE);
         BLOCK_PARTICLE_MAP.put("asexual", ASEXUAL_PARTICLE);
         BLOCK_PARTICLE_MAP.put("non_binary", NON_BINARY_PARTICLE);
-    }
-
-    public static boolean isIn(Block[] list, BlockState state){
-        if (state == null) return false;
-        for (Block block : list){
-            if (state.is(block)) return true;
-        }
-        return false;
-    }
-
-    public static Block[] getBaseForOutcrops(BlockState block){
-        if (block == null) return null;
-        if (block.is(IRON_OUTCROP)) return IRON_OUTCROP_BASES;
-        if (block.is(REDSTONE_OUTCROP)) return REDSTONE_OUTCROP_BASES;
-        if (block.is(LAPIS_OUTCROP)) return LAPIS_OUTCROP_BASES;
-        if (block.is(GOLD_OUTCROP)) return GOLD_OUTCROP_BASES;
-        if (block.is(DIAMOND_OUTCROP)) return DIAMOND_OUTCROP_BASES;
-        if (block.is(COPPER_OUTCROP)) return COPPER_OUTCROP_BASES;
-        if (block.is(COAL_OUTCROP)) return COAL_OUTCROP_BASES;
-        if (block.is(EMERALD_OUTCROP)) return EMERALD_OUTCROP_BASES;
-        if (block.is(NETHER_GOLD_OUTCROP)) return GOLD_OUTCROP_BASES;
-        if (block.is(QUARTZ_OUTCROP)) return QUARTZ_OUTCROP_BASES;
-        return null;
-    }
-
-    public static Block randomOutcrop(){
-        int randomInt = new Random().nextInt(OUTCROPS.length);
-        return OUTCROPS[randomInt];
     }
 
     private static boolean always(BlockState $$0, BlockGetter $$1, BlockPos $$2) {
