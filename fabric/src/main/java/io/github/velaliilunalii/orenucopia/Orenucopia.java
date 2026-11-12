@@ -1,5 +1,6 @@
 package io.github.velaliilunalii.orenucopia;
 
+import io.github.velaliilunalii.orenucopia.item.OutcropSeedItem;
 import io.github.velaliilunalii.orenucopia.item.OrenucopiaItem;
 import io.github.velaliilunalii.orenucopia.item.TourmalineItem;
 import io.github.velaliilunalii.orenucopia.recipe.ForgeCrushingRecipe;
@@ -27,8 +28,6 @@ import static io.github.velaliilunalii.orenucopia.CommonClass.BLANK_TOURMALINE;
 import static io.github.velaliilunalii.orenucopia.CommonClass.BLANK_TOURMALINE_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_CHUNK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_CHUNK_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_NUGGET_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.COAL_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.CONDENSED_EXPERIENCE;
@@ -37,14 +36,10 @@ import static io.github.velaliilunalii.orenucopia.CommonClass.COPPER_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.COPPER_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.CUPRITE_CHUNK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.CUPRITE_CHUNK_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_NUGGET_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.ECHO_TREASURE_BLOCK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_NUGGET_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EXPERIENCE_DUST;
@@ -53,8 +48,6 @@ import static io.github.velaliilunalii.orenucopia.CommonClass.GOLD_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.GOLD_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.IRON_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.IRON_OUTCROP_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.LAPIS_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.LAPIS_NUGGET_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.LAPIS_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.LAPIS_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.LAZULITE_CHUNK;
@@ -66,16 +59,6 @@ import static io.github.velaliilunalii.orenucopia.CommonClass.PERIDOTITE_CHUNK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.PERIDOTITE_CHUNK_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.PYRITE_CHUNK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.PYRITE_CHUNK_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.QUARTZ_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.QUARTZ_NUGGET_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_COPPER_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_COPPER_NUGGET_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_GOLD_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_GOLD_NUGGET_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_IRON_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.RAW_IRON_NUGGET_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.REDSTONE_NUGGET;
-import static io.github.velaliilunalii.orenucopia.CommonClass.REDSTONE_NUGGET_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.REDSTONE_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.REDSTONE_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.ROCK_CANDY;
@@ -125,16 +108,15 @@ public class Orenucopia implements ModInitializer {
                         .title(Component.translatable("creative_mode_tab.orenucopia.orenucopia_tab"))
                         .icon(OrenucopiaItem::getFilledOrenucopia)
                         .displayItems((parameters, output) -> {
-                            // ========== CONTAINERS ==========
-                            output.accept(CommonClass.RAW_IRON_NUGGET);
-                            output.accept(CommonClass.REDSTONE_NUGGET);
-                            output.accept(CommonClass.LAPIS_NUGGET);
-                            output.accept(CommonClass.RAW_GOLD_NUGGET);
-                            output.accept(CommonClass.DIAMOND_NUGGET);
-                            output.accept(CommonClass.RAW_COPPER_NUGGET);
-                            output.accept(CommonClass.COAL_NUGGET);
-                            output.accept(CommonClass.EMERALD_NUGGET);
-                            output.accept(CommonClass.QUARTZ_NUGGET);
+                            output.accept(CommonClass.IRON_OUTCROP);
+                            output.accept(CommonClass.REDSTONE_OUTCROP);
+                            output.accept(CommonClass.LAPIS_OUTCROP);
+                            output.accept(CommonClass.GOLD_OUTCROP);
+                            output.accept(CommonClass.DIAMOND_OUTCROP);
+                            output.accept(CommonClass.COPPER_OUTCROP);
+                            output.accept(CommonClass.COAL_OUTCROP);
+                            output.accept(CommonClass.EMERALD_OUTCROP);
+                            output.accept(CommonClass.QUARTZ_OUTCROP);
 
                             output.accept(CommonClass.AURICHALCITE_CHUNK);
                             output.accept(CommonClass.CUPRITE_CHUNK);
@@ -187,39 +169,23 @@ public class Orenucopia implements ModInitializer {
     }
 
     public static void registerBlocks() {
-        ECHO_TREASURE_BLOCK = registerBlockWithItem("echo_treasure", ECHO_TREASURE_BLOCK_SUPPLIER);
-
-        IRON_OUTCROP = registerBlock("iron_outcrop", IRON_OUTCROP_SUPPLIER);
-        REDSTONE_OUTCROP = registerBlock("redstone_outcrop", REDSTONE_OUTCROP_SUPPLIER);
-        LAPIS_OUTCROP = registerBlock("lapis_outcrop", LAPIS_OUTCROP_SUPPLIER);
-        GOLD_OUTCROP = registerBlock("gold_outcrop", GOLD_OUTCROP_SUPPLIER);
-        DIAMOND_OUTCROP = registerBlock("diamond_outcrop", DIAMOND_OUTCROP_SUPPLIER);
-        COPPER_OUTCROP = registerBlock("copper_outcrop", COPPER_OUTCROP_SUPPLIER);
-        COAL_OUTCROP = registerBlock("coal_outcrop", COAL_OUTCROP_SUPPLIER);
-        EMERALD_OUTCROP = registerBlock("emerald_outcrop", EMERALD_OUTCROP_SUPPLIER);
+        IRON_OUTCROP = registerOutcropBlockWithItem("iron_outcrop", "raw_iron_nugget", IRON_OUTCROP_SUPPLIER);
+        REDSTONE_OUTCROP = registerOutcropBlockWithItem("redstone_outcrop", "redstone_nugget", REDSTONE_OUTCROP_SUPPLIER);
+        LAPIS_OUTCROP = registerOutcropBlockWithItem("lapis_outcrop", "lapis_nugget", LAPIS_OUTCROP_SUPPLIER);
+        GOLD_OUTCROP = registerOutcropBlockWithItem("gold_outcrop", "raw_gold_nugget", GOLD_OUTCROP_SUPPLIER);
+        DIAMOND_OUTCROP = registerOutcropBlockWithItem("diamond_outcrop", "diamond_nugget", DIAMOND_OUTCROP_SUPPLIER);
+        COPPER_OUTCROP = registerOutcropBlockWithItem("copper_outcrop", "raw_copper_nugget", COPPER_OUTCROP_SUPPLIER);
+        COAL_OUTCROP = registerOutcropBlockWithItem("coal_outcrop", "coal_nugget", COAL_OUTCROP_SUPPLIER);
+        EMERALD_OUTCROP = registerOutcropBlockWithItem("emerald_outcrop", "emerald_nugget", EMERALD_OUTCROP_SUPPLIER);
         NETHER_GOLD_OUTCROP = registerBlock("nether_gold_outcrop", NETHER_GOLD_OUTCROP_SUPPLIER);
-        QUARTZ_OUTCROP = registerBlock("quartz_outcrop", QUARTZ_OUTCROP_SUPPLIER);
+        QUARTZ_OUTCROP = registerOutcropBlockWithItem("quartz_outcrop", "quartz_nugget", QUARTZ_OUTCROP_SUPPLIER);
+
+        INFECTED_IRON_OUTCROP = registerBlock("infected_iron_outcrop", INFECTED_IRON_OUTCROP_SUPPLIER);
+
+        ECHO_TREASURE_BLOCK = registerBlock("echo_treasure", ECHO_TREASURE_BLOCK_SUPPLIER);
     }
 
     public static void registerItems() {
-        RAW_IRON_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "raw_iron_nugget"),
-                RAW_IRON_NUGGET_SUPPLIER.get());
-        REDSTONE_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "redstone_nugget"),
-                REDSTONE_NUGGET_SUPPLIER.get());
-        LAPIS_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "lapis_nugget"),
-                LAPIS_NUGGET_SUPPLIER.get());
-        RAW_GOLD_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "raw_gold_nugget"),
-                RAW_GOLD_NUGGET_SUPPLIER.get());
-        DIAMOND_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "diamond_nugget"),
-                DIAMOND_NUGGET_SUPPLIER.get());
-        RAW_COPPER_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "raw_copper_nugget"),
-                RAW_COPPER_NUGGET_SUPPLIER.get());
-        COAL_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "coal_nugget"),
-                COAL_NUGGET_SUPPLIER.get());
-        EMERALD_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "emerald_nugget"),
-                EMERALD_NUGGET_SUPPLIER.get());
-        QUARTZ_NUGGET = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "quartz_nugget"),
-                QUARTZ_NUGGET_SUPPLIER.get());
 
         AURICHALCITE_CHUNK = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, "aurichalcite_chunk"),
                 AURICHALCITE_CHUNK_SUPPLIER.get());
@@ -293,10 +259,10 @@ public class Orenucopia implements ModInitializer {
         return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(Constants.MOD_ID, name), supplier.get());
     }
 
-    public static Block registerBlockWithItem(String name, Supplier<Block> supplier){
-        Block block = registerBlock(name, supplier);
-        Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, name),
-                new BlockItem(block, new Item.Properties()));
+    public static Block registerOutcropBlockWithItem(String blockName, String itemName, Supplier<Block> supplier){
+        Block block = registerBlock(blockName, supplier);
+        Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Constants.MOD_ID, itemName),
+                new OutcropSeedItem(block, new Item.Properties()));
         return block;
     }
 

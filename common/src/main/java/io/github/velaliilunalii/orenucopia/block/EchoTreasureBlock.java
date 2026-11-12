@@ -13,9 +13,8 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
-import static io.github.velaliilunalii.orenucopia.block.OutcropBlock.*;
-import static io.github.velaliilunalii.orenucopia.block.OutcropBlock.getRandomOrthogonalDirection;
 import static io.github.velaliilunalii.orenucopia.util.ItemStackUtil.getTreasurePos;
 import static net.minecraft.world.item.Items.ECHO_SHARD;
 import static net.minecraft.world.level.block.Blocks.DEEPSLATE;
@@ -23,6 +22,7 @@ import static net.minecraft.world.level.block.Blocks.STONE;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
 public class EchoTreasureBlock extends RotatedPillarBlock {
+
     public EchoTreasureBlock(Properties $$0) {
         super($$0);
     }

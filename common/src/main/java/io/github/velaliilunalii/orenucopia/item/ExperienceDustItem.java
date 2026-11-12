@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import io.github.velaliilunalii.orenucopia.CommonClass;
 import io.github.velaliilunalii.orenucopia.util.ItemStackUtil;
+import io.github.velaliilunalii.orenucopia.util.ModTags;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
@@ -14,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class ExperienceDustItem extends Item {
     public ExperienceDustItem(Properties $$0) {
@@ -40,7 +43,7 @@ public class ExperienceDustItem extends Item {
     }
 
     public static void giveTourmaline(Player player){
-        ArrayList<String> fullList = new ArrayList<>(CommonClass.TOURMALINES);
+        ArrayList<String> fullList = new ArrayList<>(TOURMALINES);
 
         //Check duplicates
         ArrayList<String> subtractedList = new ArrayList<>(fullList);
@@ -57,4 +60,12 @@ public class ExperienceDustItem extends Item {
         TourmalineItem.setTourmaline(newStack, tourmalineType);
         ItemStackUtil.smartAddItem(player, newStack);
     }
+
+    public static final Set<String> TOURMALINES = Set.of(
+            "transgender",
+            "lesbian",
+            "bisexual",
+            "asexual",
+            "non_binary"
+    );
 }

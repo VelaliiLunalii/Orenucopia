@@ -22,7 +22,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
@@ -151,23 +150,23 @@ public class Orenucopia {
             BLOCKS.register("echo_treasure_block", CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER);
 
     public static final RegistryObject<OutcropSeedItem> RAW_IRON_NUGGET =
-            ITEMS.register("raw_iron_nugget", CommonClass.RAW_IRON_NUGGET_SUPPLIER);
+            ITEMS.register("raw_iron_nugget", () -> new OutcropSeedItem(IRON_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> REDSTONE_NUGGET =
-            ITEMS.register("redstone_nugget", CommonClass.REDSTONE_NUGGET_SUPPLIER);
+            ITEMS.register("redstone_nugget", () -> new OutcropSeedItem(REDSTONE_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> LAPIS_NUGGET =
-            ITEMS.register("lapis_nugget", CommonClass.LAPIS_NUGGET_SUPPLIER);
+            ITEMS.register("lapis_nugget", () -> new OutcropSeedItem(LAPIS_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> RAW_GOLD_NUGGET =
-            ITEMS.register("raw_gold_nugget", CommonClass.RAW_GOLD_NUGGET_SUPPLIER);
+            ITEMS.register("raw_gold_nugget", () -> new OutcropSeedItem(GOLD_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> DIAMOND_NUGGET =
-            ITEMS.register("diamond_nugget", CommonClass.DIAMOND_NUGGET_SUPPLIER);
+            ITEMS.register("diamond_nugget", () -> new OutcropSeedItem(DIAMOND_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> RAW_COPPER_NUGGET =
-            ITEMS.register("raw_copper_nugget", CommonClass.RAW_COPPER_NUGGET_SUPPLIER);
+            ITEMS.register("raw_copper_nugget", () -> new OutcropSeedItem(COPPER_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> COAL_NUGGET =
-            ITEMS.register("coal_nugget", CommonClass.COAL_NUGGET_SUPPLIER);
+            ITEMS.register("coal_nugget", () -> new OutcropSeedItem(COAL_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> EMERALD_NUGGET =
-            ITEMS.register("emerald_nugget", CommonClass.EMERALD_NUGGET_SUPPLIER);
+            ITEMS.register("emerald_nugget", () -> new OutcropSeedItem(EMERALD_OUTCROP.get(), new Item.Properties()));
     public static final RegistryObject<OutcropSeedItem> QUARTZ_NUGGET =
-            ITEMS.register("quartz_nugget", CommonClass.QUARTZ_NUGGET_SUPPLIER);
+            ITEMS.register("quartz_nugget", () -> new OutcropSeedItem(QUARTZ_OUTCROP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> AURICHALCITE_CHUNK =
             ITEMS.register("aurichalcite_chunk", CommonClass.AURICHALCITE_CHUNK_SUPPLIER);

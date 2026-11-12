@@ -1,8 +1,7 @@
 package io.github.velaliilunalii.orenucopia.world;
 
 import com.mojang.serialization.Codec;
-import io.github.velaliilunalii.orenucopia.block.OutcropBlock;
-import io.github.velaliilunalii.orenucopia.util.OutcropBlockUtil;
+import io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.material.Fluids;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static io.github.velaliilunalii.orenucopia.block.OutcropBlock.*;
+import static io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock.*;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
 public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
@@ -70,7 +69,7 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
         float trailChance = oreOutcropBlockSettings.trailChance;
         int maxTrailLength = oreOutcropBlockSettings.maxTrailLength;
 
-        if (state.is(baseBlocks) && outcrop.getBlock() instanceof OutcropBlock outcropBlock) {
+        if (state.is(baseBlocks) && outcrop.getBlock() instanceof GrowingOutcropBlock growingOutcropBlock) {
             for (Direction direction : Direction.values()) {
                 BlockPos adjacentPos = pos.relative(direction);
 
@@ -86,8 +85,8 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
                     boolean waterlogged = fluidState.getType() == Fluids.WATER;
                     Random random = new Random();
                     float randomFloat = random.nextFloat();
-                    int maxAge = Math.min(outcropBlock.getMaxAge(), 2);
-                    boolean noOtherInRange = !otherInRange(level, pos, outcropBlock, 4, maxAge);
+                    int maxAge = Math.min(growingOutcropBlock.getMaxAge(), 2);
+                    boolean noOtherInRange = !otherInRange(level, pos, growingOutcropBlock, 4, maxAge);
 
                     if (maxAge > 1) {
                         if (randomFloat < grownOutcropChance && noOtherInRange) {
@@ -168,7 +167,7 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
         return placed + placeTrailingOutcropsTest(level, newPos, baseBlocks, outcrop, maxTrailLength, trailChance);
     }
 
-    public static boolean otherInRange(WorldGenLevel level, BlockPos pos, OutcropBlock outcrop, int length, int age){
+    public static boolean otherInRange(WorldGenLevel level, BlockPos pos, GrowingOutcropBlock outcrop, int length, int age){
         int halfLength = length/2;
         for (BlockPos blockPos : BlockPos.betweenClosed(
                 pos.offset(-halfLength, -halfLength, -halfLength),

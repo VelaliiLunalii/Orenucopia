@@ -1,54 +1,29 @@
 package io.github.velaliilunalii.orenucopia.item;
 
-import io.github.velaliilunalii.orenucopia.CommonClass;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluids;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
-import static io.github.velaliilunalii.orenucopia.block.OutcropBlock.*;
-import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
-
-public class OutcropSeedItem extends Item {
-
-
-    public OutcropSeedItem(Properties properties) {
-        super(properties);
+public class OutcropSeedItem extends BlockItem {
+    public OutcropSeedItem(Block block, Properties properties) {
+        super(block, properties);
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Direction direction = context.getClickedFace();
-        if (level.getBlockState(pos).isFaceSturdy(level, pos, direction)){
-            BlockPos placePos = pos.relative(direction);
-            if (level.getBlockState(placePos).canBeReplaced(new BlockPlaceContext(context))) {
-                level.setBlock(placePos, CommonClass.SEED_BLOCK_MAP.get(this).defaultBlockState()
-                        .setValue(AGE, 0)
-                        .setValue(AGING, true)
-                        .setValue(BlockStateProperties.FACING, direction)
-                        .setValue(ROTATION_FACING, getRandomOrthogonalDirection(direction))
-                        .setValue(WATERLOGGED, level.getFluidState(placePos).getType() == Fluids.WATER), 2);
-                context.getItemInHand().shrink(1);
-            }
-        }
-        context.getPlayer().swing(context.getHand());
-        return super.useOn(context);
+    public String getDescriptionId() {
+        return this.getOrCreateDescriptionId();
     }
 
-    public void appendHoverText(ItemStack $$0, Level $$1, List<Component> $$2, TooltipFlag $$3){
-        $$2.add(Component.translatable("item.orenucopia.outcrop_seed.description").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
-        super.appendHoverText($$0, $$1, $$2, $$3);
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("item.orenucopia.outcrop_seed.description").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 }
