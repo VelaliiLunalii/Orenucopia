@@ -1,5 +1,6 @@
 package io.github.velaliilunalii.orenucopia;
 
+import io.github.velaliilunalii.orenucopia.block.entity.EchoTreasureBlockEntity;
 import io.github.velaliilunalii.orenucopia.item.OutcropSeedItem;
 import io.github.velaliilunalii.orenucopia.item.OrenucopiaItem;
 import io.github.velaliilunalii.orenucopia.item.TourmalineItem;
@@ -8,6 +9,7 @@ import io.github.velaliilunalii.orenucopia.util.ModLootTableModifiers;
 import io.github.velaliilunalii.orenucopia.world.ModFeatures;
 import io.github.velaliilunalii.orenucopia.world.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
@@ -38,8 +40,8 @@ import static io.github.velaliilunalii.orenucopia.CommonClass.CUPRITE_CHUNK;
 import static io.github.velaliilunalii.orenucopia.CommonClass.CUPRITE_CHUNK_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.DIAMOND_OUTCROP_SUPPLIER;
-import static io.github.velaliilunalii.orenucopia.CommonClass.ECHO_TREASURE_BLOCK;
-import static io.github.velaliilunalii.orenucopia.CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER;
+import static io.github.velaliilunalii.orenucopia.CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK;
+import static io.github.velaliilunalii.orenucopia.CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_OUTCROP;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EMERALD_OUTCROP_SUPPLIER;
 import static io.github.velaliilunalii.orenucopia.CommonClass.EXPERIENCE_DUST;
@@ -82,6 +84,15 @@ public class Orenucopia implements ModInitializer {
         registerSounds();
         registerRecipes();
         registerEnchantments();
+
+        ECHO_TREASURE_BLOCK_ENTITY = Registry.register(
+                BuiltInRegistries.BLOCK_ENTITY_TYPE,
+                new ResourceLocation(Constants.MOD_ID, "echo_treasure_block_entity"),
+                FabricBlockEntityTypeBuilder.create(
+                        EchoTreasureBlockEntity::new,
+                        CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK
+                ).build()
+        );
 
         ModFeatures.registerModFeatures();
         ModWorldGeneration.registerWorldGeneration();
@@ -182,7 +193,8 @@ public class Orenucopia implements ModInitializer {
 
         INFECTED_IRON_OUTCROP = registerBlock("infected_iron_outcrop", INFECTED_IRON_OUTCROP_SUPPLIER);
 
-        ECHO_TREASURE_BLOCK = registerBlock("echo_treasure", ECHO_TREASURE_BLOCK_SUPPLIER);
+        DEEPSLATE_ECHO_TREASURE_BLOCK = registerBlock("deepslate_echo_treasure", DEEPSLATE_ECHO_TREASURE_BLOCK_SUPPLIER);
+        STONE_ECHO_TREASURE_BLOCK = registerBlock("stone_echo_treasure", STONE_ECHO_TREASURE_BLOCK_SUPPLIER);
     }
 
     public static void registerItems() {

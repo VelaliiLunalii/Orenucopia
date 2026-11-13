@@ -147,7 +147,7 @@ public class Orenucopia {
             BLOCKS.register("quartz_outcrop", CommonClass.QUARTZ_OUTCROP_SUPPLIER);
 
     public static final RegistryObject<Block> ECHO_TREASURE_BLOCK =
-            BLOCKS.register("echo_treasure_block", CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER);
+            BLOCKS.register("echo_treasure_block", CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK_SUPPLIER);
 
     public static final RegistryObject<OutcropSeedItem> RAW_IRON_NUGGET =
             ITEMS.register("raw_iron_nugget", () -> new OutcropSeedItem(IRON_OUTCROP.get(), new Item.Properties()));
@@ -260,7 +260,7 @@ public class Orenucopia {
             CommonClass.NETHER_GOLD_OUTCROP = NETHER_GOLD_OUTCROP.get();
             CommonClass.QUARTZ_OUTCROP = QUARTZ_OUTCROP.get();
 
-            CommonClass.ECHO_TREASURE_BLOCK = ECHO_TREASURE_BLOCK.get();
+            CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK = ECHO_TREASURE_BLOCK.get();
 
             CommonClass.RAW_IRON_NUGGET = RAW_IRON_NUGGET.get();
             CommonClass.REDSTONE_NUGGET = REDSTONE_NUGGET.get();

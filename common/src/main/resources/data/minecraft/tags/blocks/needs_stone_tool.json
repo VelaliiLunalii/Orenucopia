@@ -5,6 +5,9 @@
     "orenucopia:copper_outcrop",
     "orenucopia:iron_outcrop",
     "orenucopia:nether_gold_outcrop",
-    "orenucopia:quartz_outcrop"
+    "orenucopia:quartz_outcrop",
+    "orenucopia:infected_iron_outcrop",
+    "orenucopia:deepslate_echo_treasure",
+    "orenucopia:stone_echo_treasure"
   ]
 }

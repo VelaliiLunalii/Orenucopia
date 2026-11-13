@@ -1,6 +1,7 @@
 package io.github.velaliilunalii.orenucopia;
 
 import io.github.velaliilunalii.orenucopia.block.*;
+import io.github.velaliilunalii.orenucopia.block.entity.EchoTreasureBlockEntity;
 import io.github.velaliilunalii.orenucopia.enchantment.ProspectingEnchantment;
 import io.github.velaliilunalii.orenucopia.item.*;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -58,11 +60,16 @@ public class CommonClass {
 
     public static Block INFECTED_IRON_OUTCROP;
     public static final Supplier<Block> INFECTED_IRON_OUTCROP_SUPPLIER = () ->
-            new ThemedOutcropBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
+            new ThemedOutcropBlock(IRON_OUTCROP, BlockBehaviour.Properties.copy(Blocks.IRON_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always));
 
-    public static Block ECHO_TREASURE_BLOCK;
-    public static final Supplier<Block> ECHO_TREASURE_BLOCK_SUPPLIER = () ->
+    public static Block DEEPSLATE_ECHO_TREASURE_BLOCK;
+    public static final Supplier<Block> DEEPSLATE_ECHO_TREASURE_BLOCK_SUPPLIER = () ->
             new EchoTreasureBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE));
+    public static Block STONE_ECHO_TREASURE_BLOCK;
+    public static final Supplier<Block> STONE_ECHO_TREASURE_BLOCK_SUPPLIER = () ->
+            new EchoTreasureBlock(BlockBehaviour.Properties.copy(Blocks.STONE));
+
+    public static BlockEntityType<EchoTreasureBlockEntity> ECHO_TREASURE_BLOCK_ENTITY;
 
     public static OutcropSeedItem RAW_IRON_NUGGET;
     public static OutcropSeedItem REDSTONE_NUGGET;
