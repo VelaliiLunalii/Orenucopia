@@ -1,12 +1,15 @@
 package io.github.velaliilunalii.orenucopia.world;
 
 import com.mojang.serialization.Codec;
+import io.github.velaliilunalii.orenucopia.CommonClass;
 import io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock;
+import io.github.velaliilunalii.orenucopia.util.MathUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -17,8 +20,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 import static io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock.*;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
@@ -52,14 +54,14 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
             BlockState state = level.getBlockState(pos);
 
             for(OreOutcropBlockSettings oreOutcropBlockSettings : outcropConfiguration.oreOutcropBlockSettings){
-                placed += placeTest(oreOutcropBlockSettings, level, state, pos, sectionBounds);
+                placed += placeOutcrop(oreOutcropBlockSettings, level, state, pos, sectionBounds);
             }
         }
 
         return placed > 0;
     }
 
-    public static int placeTest(OreOutcropBlockSettings oreOutcropBlockSettings, WorldGenLevel level, BlockState state, BlockPos pos, int[][] sectionBounds){
+    public static int placeOutcrop(OreOutcropBlockSettings oreOutcropBlockSettings, WorldGenLevel level, BlockState state, BlockPos pos, int[][] sectionBounds){
         int placed = 0;
 
         BlockState outcrop = oreOutcropBlockSettings.outcropBlock;
@@ -88,18 +90,33 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
                     int maxAge = Math.min(growingOutcropBlock.getMaxAge(), 2);
                     boolean noOtherInRange = !otherInRange(level, pos, growingOutcropBlock, 4, maxAge);
 
+                    BlockState chosenOutcropVariant = chooseBlock(oreOutcropBlockSettings, level, pos);
+                    boolean chosenIsDifferent = !chosenOutcropVariant.equals(outcrop);
+
                     if (maxAge > 1) {
                         if (randomFloat < grownOutcropChance && noOtherInRange) {
-                            level.setBlock(adjacentPos, outcrop
-                                    .setValue(AGE, maxAge)
-                                    .setValue(AGING, false)
-                                    .setValue(BlockStateProperties.FACING, direction)
-                                    .setValue(ROTATION_FACING, getRandomOrthogonalDirection(direction))
-                                    .setValue(WATERLOGGED, waterlogged), 2);
-                            placed += 1 + placeTrailingOutcropsTest(level, adjacentPos, baseBlocks, outcrop,
+                            if (chosenIsDifferent)
+                                level.setBlock(adjacentPos, chosenOutcropVariant
+                                        .setValue(BlockStateProperties.FACING, direction)
+                                        .setValue(ROTATION_FACING, getRandomOrthogonalDirection(direction))
+                                        .setValue(WATERLOGGED, waterlogged), 2);
+                            else
+                                level.setBlock(adjacentPos, outcrop
+                                        .setValue(AGE, maxAge)
+                                        .setValue(AGING, false)
+                                        .setValue(BlockStateProperties.FACING, direction)
+                                        .setValue(ROTATION_FACING, getRandomOrthogonalDirection(direction))
+                                        .setValue(WATERLOGGED, waterlogged), 2);
+                            placed += 1 + placeTrailingOutcrops(level, adjacentPos, baseBlocks, outcrop,
                                     new Random().nextInt(maxTrailLength + 1), trailChance);
                         } else if (randomFloat < growingOutcropChance) {
-                            level.setBlock(adjacentPos, outcrop
+                            if (chosenIsDifferent)
+                                level.setBlock(adjacentPos, chosenOutcropVariant
+                                        .setValue(BlockStateProperties.FACING, direction)
+                                        .setValue(ROTATION_FACING, getRandomOrthogonalDirection(direction))
+                                        .setValue(WATERLOGGED, waterlogged), 2);
+                            else
+                                level.setBlock(adjacentPos, outcrop
                                     .setValue(AGE, 1)
                                     .setValue(AGING, false)
                                     .setValue(BlockStateProperties.FACING, direction)
@@ -124,7 +141,40 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
         return placed;
     }
 
-    public static int placeTrailingOutcropsTest(WorldGenLevel level, BlockPos pos, TagKey<Block> baseBlocks, BlockState outcrop, int maxTrailLength, float trailChance){
+    public static BlockState chooseBlock(OreOutcropBlockSettings oreOutcropBlockSettings, WorldGenLevel level, BlockPos pos){
+        List<OutcropVariantBlockSettings> variantBlockSettingsList = oreOutcropBlockSettings.outcropVariantSettings;
+
+        if (variantBlockSettingsList.isEmpty() || pos.getY() > 0) return oreOutcropBlockSettings.outcropBlock;
+
+        float randomChance = level.getRandom().nextFloat();
+        float chance = oreOutcropBlockSettings.outcropVariantsChance;
+
+        if (randomChance < chance){
+            int totalWeights = variantBlockSettingsList.stream()
+                    .mapToInt((element) -> element.outcropVariantWeight)
+                    .reduce(0, Integer::sum);
+
+
+            int chosenSlot = MathUtil.noLowerBoundsRandomInt(level.getRandom(), totalWeights - 1) + 1;
+
+            int cursor = 0;
+            int i = 0;
+            boolean found = false;
+            while (!found && cursor < chosenSlot && i < variantBlockSettingsList.size()){
+                OutcropVariantBlockSettings variantBlockSettings = variantBlockSettingsList.get(i);
+                cursor += variantBlockSettings.outcropVariantWeight;
+                if (chosenSlot <= cursor) found = true;
+                else i++;
+            }
+
+            if (found){
+                return variantBlockSettingsList.get(i).outcropVariantBlock;
+            }
+        }
+        return oreOutcropBlockSettings.outcropBlock;
+    }
+
+    public static int placeTrailingOutcrops(WorldGenLevel level, BlockPos pos, TagKey<Block> baseBlocks, BlockState outcrop, int maxTrailLength, float trailChance){
         if (maxTrailLength < 1) return 0;
         maxTrailLength --;
 
@@ -164,7 +214,7 @@ public class OreOutcropFeature extends Feature<OreOutcropConfiguration> {
                 .setValue(ROTATION_FACING, getRandomOrthogonalDirection(newDirection))
                 .setValue(WATERLOGGED, waterlogged), 2);
 
-        return placed + placeTrailingOutcropsTest(level, newPos, baseBlocks, outcrop, maxTrailLength, trailChance);
+        return placed + placeTrailingOutcrops(level, newPos, baseBlocks, outcrop, maxTrailLength, trailChance);
     }
 
     public static boolean otherInRange(WorldGenLevel level, BlockPos pos, GrowingOutcropBlock outcrop, int length, int age){

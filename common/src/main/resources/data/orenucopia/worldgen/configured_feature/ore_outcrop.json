@@ -8,6 +8,17 @@
           "Properties": {
           }
         },
+        "outcrop_variants": [
+          {
+            "outcrop_variant_block": {
+              "Name": "orenucopia:infected_iron_outcrop",
+              "Properties": {
+              }
+            },
+            "outcrop_variant_weight": "1"
+          }
+        ],
+        "outcrop_variants_chance": 0.1,
         "base_blocks": "#orenucopia:iron_outcrop_bases",
         "grown_outcrop_chance": "0.3",
         "growing_outcrop_chance": "0.1",
@@ -88,31 +99,6 @@
         },
         "base_blocks": "#orenucopia:emerald_outcrop_bases",
         "grown_outcrop_chance": "0.3"
-      },
-
-      {
-        "outcrop_block": {
-          "Name": "orenucopia:quartz_outcrop",
-          "Properties": {
-          }
-        },
-        "base_blocks": "#orenucopia:quartz_outcrop_bases",
-        "grown_outcrop_chance": "0.3",
-        "growing_outcrop_chance": "0.1",
-        "trail_chance": "0.15",
-        "max_trail_length": "2"
-      },
-      {
-        "outcrop_block": {
-          "Name": "orenucopia:nether_gold_outcrop",
-          "Properties": {
-          }
-        },
-        "base_blocks": "#orenucopia:nether_gold_outcrop_bases",
-        "grown_outcrop_chance": "0.3",
-        "growing_outcrop_chance": "0.1",
-        "trail_chance": "0.15",
-        "max_trail_length": "2"
       }
     ]
   }

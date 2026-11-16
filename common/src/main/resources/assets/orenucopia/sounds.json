@@ -10,5 +10,9 @@
   "metal_hammer": {
     "sounds": ["orenucopia:metal_hammer"],
     "subtitle": "subtitle.orenucopia.metal_hammer"
+  },
+  "sculk_echo": {
+    "sounds": ["orenucopia:sculk_echo"],
+    "subtitle": "subtitle.orenucopia.sculk_echo"
   }
 }

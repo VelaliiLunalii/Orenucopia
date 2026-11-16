@@ -1,5 +1,7 @@
 package io.github.velaliilunalii.orenucopia;
 
+import io.github.velaliilunalii.orenucopia.block.ThemedOutcropBlock;
+import io.github.velaliilunalii.orenucopia.block.entity.EchoTreasureBlockEntity;
 import io.github.velaliilunalii.orenucopia.item.*;
 import io.github.velaliilunalii.orenucopia.particle.ColoredTerrainParticle;
 import io.github.velaliilunalii.orenucopia.recipe.ForgeCrushingRecipe;
@@ -8,8 +10,10 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -21,6 +25,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -43,6 +50,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 import static io.github.velaliilunalii.orenucopia.CommonClass.*;
 
@@ -66,6 +74,8 @@ public class Orenucopia {
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Constants.MOD_ID);
     public static final DeferredRegister<Feature<?>> FEATURES =
             DeferredRegister.create(ForgeRegistries.FEATURES, Constants.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, Constants.MOD_ID);
 
 
     public static final RegistryObject<Feature<OreOutcropConfiguration>> ORE_OUTCROP =
@@ -83,15 +93,15 @@ public class Orenucopia {
                             .title(Component.translatable("creative_mode_tab.orenucopia.orenucopia_tab"))
                             .icon(OrenucopiaItem::getFilledOrenucopia)
                             .displayItems((parameters, output) -> {
-                                output.accept(CommonClass.RAW_IRON_NUGGET);
-                                output.accept(CommonClass.REDSTONE_NUGGET);
-                                output.accept(CommonClass.LAPIS_NUGGET);
-                                output.accept(CommonClass.RAW_GOLD_NUGGET);
-                                output.accept(CommonClass.DIAMOND_NUGGET);
-                                output.accept(CommonClass.RAW_COPPER_NUGGET);
-                                output.accept(CommonClass.COAL_NUGGET);
-                                output.accept(CommonClass.EMERALD_NUGGET);
-                                output.accept(CommonClass.QUARTZ_NUGGET);
+                                output.accept(CommonClass.IRON_OUTCROP);
+                                output.accept(CommonClass.REDSTONE_OUTCROP);
+                                output.accept(CommonClass.LAPIS_OUTCROP);
+                                output.accept(CommonClass.GOLD_OUTCROP);
+                                output.accept(CommonClass.DIAMOND_OUTCROP);
+                                output.accept(CommonClass.COPPER_OUTCROP);
+                                output.accept(CommonClass.COAL_OUTCROP);
+                                output.accept(CommonClass.EMERALD_OUTCROP);
+                                output.accept(CommonClass.QUARTZ_OUTCROP);
 
                                 output.accept(CommonClass.AURICHALCITE_CHUNK);
                                 output.accept(CommonClass.CUPRITE_CHUNK);
@@ -125,48 +135,41 @@ public class Orenucopia {
     public static final RegistryObject<SimpleParticleType> NON_BINARY_PARTICLE =
             PARTICLE_TYPES.register("non_binary_particle", () -> new SimpleParticleType(false));
 
-    public static final RegistryObject<Block> IRON_OUTCROP =
-            BLOCKS.register("iron_outcrop", CommonClass.IRON_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> REDSTONE_OUTCROP =
-            BLOCKS.register("redstone_outcrop", CommonClass.REDSTONE_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> LAPIS_OUTCROP =
-            BLOCKS.register("lapis_outcrop", CommonClass.LAPIS_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> GOLD_OUTCROP =
-            BLOCKS.register("gold_outcrop", CommonClass.GOLD_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> DIAMOND_OUTCROP =
-            BLOCKS.register("diamond_outcrop", CommonClass.DIAMOND_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> COPPER_OUTCROP =
-            BLOCKS.register("copper_outcrop", CommonClass.COPPER_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> COAL_OUTCROP =
-            BLOCKS.register("coal_outcrop", CommonClass.COAL_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> EMERALD_OUTCROP =
-            BLOCKS.register("emerald_outcrop", CommonClass.EMERALD_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> IRON_OUTCROP = registerOutcropBlockWithItem(
+            "iron_outcrop", "raw_iron_nugget", CommonClass.IRON_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> REDSTONE_OUTCROP = registerOutcropBlockWithItem(
+            "redstone_outcrop", "redstone_nugget", CommonClass.REDSTONE_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> LAPIS_OUTCROP = registerOutcropBlockWithItem(
+            "lapis_outcrop", "lapis_nugget", CommonClass.LAPIS_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> GOLD_OUTCROP = registerOutcropBlockWithItem(
+            "gold_outcrop", "raw_gold_nugget", CommonClass.GOLD_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> DIAMOND_OUTCROP = registerOutcropBlockWithItem(
+            "diamond_outcrop", "diamond_nugget", CommonClass.DIAMOND_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> COPPER_OUTCROP = registerOutcropBlockWithItem(
+            "copper_outcrop", "raw_copper_nugget", CommonClass.COPPER_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> COAL_OUTCROP = registerOutcropBlockWithItem(
+            "coal_outcrop", "coal_nugget", CommonClass.COAL_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> EMERALD_OUTCROP = registerOutcropBlockWithItem(
+            "emerald_outcrop", "emerald_nugget", CommonClass.EMERALD_OUTCROP_SUPPLIER);
     public static final RegistryObject<Block> NETHER_GOLD_OUTCROP =
             BLOCKS.register("nether_gold_outcrop", CommonClass.GOLD_OUTCROP_SUPPLIER);
-    public static final RegistryObject<Block> QUARTZ_OUTCROP =
-            BLOCKS.register("quartz_outcrop", CommonClass.QUARTZ_OUTCROP_SUPPLIER);
+    public static final RegistryObject<Block> QUARTZ_OUTCROP = registerOutcropBlockWithItem(
+            "quartz_outcrop", "quartz_nugget", CommonClass.QUARTZ_OUTCROP_SUPPLIER);
+
+    public static final RegistryObject<Block> INFECTED_IRON_OUTCROP =
+            BLOCKS.register("infected_iron_outcrop", () ->
+                    new ThemedOutcropBlock(IRON_OUTCROP.get(), BlockBehaviour.Properties.copy(Blocks.IRON_ORE).lightLevel(blockstate -> 6).hasPostProcess(CommonClass::always).emissiveRendering(CommonClass::always)));
 
     public static final RegistryObject<Block> ECHO_TREASURE_BLOCK =
-            BLOCKS.register("echo_treasure_block", CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK_SUPPLIER);
+            BLOCKS.register("echo_treasure", CommonClass.ECHO_TREASURE_BLOCK_SUPPLIER);
 
-    public static final RegistryObject<OutcropSeedItem> RAW_IRON_NUGGET =
-            ITEMS.register("raw_iron_nugget", () -> new OutcropSeedItem(IRON_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> REDSTONE_NUGGET =
-            ITEMS.register("redstone_nugget", () -> new OutcropSeedItem(REDSTONE_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> LAPIS_NUGGET =
-            ITEMS.register("lapis_nugget", () -> new OutcropSeedItem(LAPIS_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> RAW_GOLD_NUGGET =
-            ITEMS.register("raw_gold_nugget", () -> new OutcropSeedItem(GOLD_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> DIAMOND_NUGGET =
-            ITEMS.register("diamond_nugget", () -> new OutcropSeedItem(DIAMOND_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> RAW_COPPER_NUGGET =
-            ITEMS.register("raw_copper_nugget", () -> new OutcropSeedItem(COPPER_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> COAL_NUGGET =
-            ITEMS.register("coal_nugget", () -> new OutcropSeedItem(COAL_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> EMERALD_NUGGET =
-            ITEMS.register("emerald_nugget", () -> new OutcropSeedItem(EMERALD_OUTCROP.get(), new Item.Properties()));
-    public static final RegistryObject<OutcropSeedItem> QUARTZ_NUGGET =
-            ITEMS.register("quartz_nugget", () -> new OutcropSeedItem(QUARTZ_OUTCROP.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<EchoTreasureBlockEntity>> ECHO_TREASURE_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("echo_treasure_block_entity", () ->
+                    BlockEntityType.Builder.of(
+                            EchoTreasureBlockEntity::new,
+                            ECHO_TREASURE_BLOCK.get()
+                    ).build(null)
+            );
 
     public static final RegistryObject<Item> AURICHALCITE_CHUNK =
             ITEMS.register("aurichalcite_chunk", CommonClass.AURICHALCITE_CHUNK_SUPPLIER);
@@ -218,6 +221,8 @@ public class Orenucopia {
             SOUND_EVENTS.register("crumble", CommonClass.CRUMBLE_SUPPLIER);
     public static final RegistryObject<SoundEvent> METAL_HAMMER =
             SOUND_EVENTS.register("metal_hammer", CommonClass.METAL_HAMMER_SUPPLIER);
+    public static final RegistryObject<SoundEvent> SCULK_ECHO =
+            SOUND_EVENTS.register("sculk_echo", CommonClass.SCULK_ECHO_SUPPLIER);
 
     public Orenucopia() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -231,6 +236,7 @@ public class Orenucopia {
         RECIPE_TYPES.register(modBus);
         RECIPE_SERIALIZERS.register(modBus);
         FEATURES.register(modBus);
+        BLOCK_ENTITIES.register(modBus);
 
         modBus.addListener(this::onCommonSetup);
 
@@ -260,17 +266,10 @@ public class Orenucopia {
             CommonClass.NETHER_GOLD_OUTCROP = NETHER_GOLD_OUTCROP.get();
             CommonClass.QUARTZ_OUTCROP = QUARTZ_OUTCROP.get();
 
-            CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK = ECHO_TREASURE_BLOCK.get();
+            CommonClass.INFECTED_IRON_OUTCROP = INFECTED_IRON_OUTCROP.get();
+            CommonClass.ECHO_TREASURE_BLOCK = ECHO_TREASURE_BLOCK.get();
 
-            CommonClass.RAW_IRON_NUGGET = RAW_IRON_NUGGET.get();
-            CommonClass.REDSTONE_NUGGET = REDSTONE_NUGGET.get();
-            CommonClass.LAPIS_NUGGET = LAPIS_NUGGET.get();
-            CommonClass.RAW_GOLD_NUGGET = RAW_GOLD_NUGGET.get();
-            CommonClass.DIAMOND_NUGGET = DIAMOND_NUGGET.get();
-            CommonClass.RAW_COPPER_NUGGET = RAW_COPPER_NUGGET.get();
-            CommonClass.COAL_NUGGET = COAL_NUGGET.get();
-            CommonClass.EMERALD_NUGGET = EMERALD_NUGGET.get();
-            CommonClass.QUARTZ_NUGGET = QUARTZ_NUGGET.get();
+            CommonClass.ECHO_TREASURE_BLOCK_ENTITY = ECHO_TREASURE_BLOCK_ENTITY.get();
 
             CommonClass.AURICHALCITE_CHUNK = AURICHALCITE_CHUNK.get();
             CommonClass.CUPRITE_CHUNK = CUPRITE_CHUNK.get();
@@ -303,6 +302,7 @@ public class Orenucopia {
             CommonClass.CHIME = CHIME.get();
             CommonClass.CRUMBLE = CRUMBLE.get();
             CommonClass.METAL_HAMMER = METAL_HAMMER.get();
+            CommonClass.SCULK_ECHO = SCULK_ECHO.get();
 
             CommonClass.init();
         });
@@ -338,94 +338,9 @@ public class Orenucopia {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientEvents {
-
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(() -> {
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.COAL_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.COPPER_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.DIAMOND_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.GOLD_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.IRON_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.LAPIS_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.REDSTONE_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.EMERALD_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.NETHER_GOLD_OUTCROP, RenderType.cutoutMipped());
-                ItemBlockRenderTypes.setRenderLayer(CommonClass.QUARTZ_OUTCROP, RenderType.cutoutMipped());
-
-                registerTransgenderTourmalineProperty(CommonClass.TOURMALINE);
-                registerLesbianTourmalineProperty(CommonClass.TOURMALINE);
-                registerBisexualTourmalineProperty(CommonClass.TOURMALINE);
-                registerAsexualTourmalineProperty(CommonClass.TOURMALINE);
-                registerNonBinaryTourmalineProperty(CommonClass.TOURMALINE);
-
-                registerOrenucopiaItemProperty(CommonClass.ORENUCOPIA);
-            });
-        }
-
-        @SubscribeEvent
-        public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
-            event.registerSpriteSet(TRANSGENDER_PARTICLE.get(), ColoredTerrainParticle.Provider::new);
-            event.registerSpriteSet(LESBIAN_PARTICLE.get(), ColoredTerrainParticle.Provider::new);
-            event.registerSpriteSet(BISEXUAL_PARTICLE.get(), ColoredTerrainParticle.Provider::new);
-            event.registerSpriteSet(ASEXUAL_PARTICLE.get(), ColoredTerrainParticle.Provider::new);
-            event.registerSpriteSet(NON_BINARY_PARTICLE.get(), ColoredTerrainParticle.Provider::new);
-        }
-    }
-
-    private static void registerTransgenderTourmalineProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "transgender"),
-                (stack, level, entity, seed) -> {
-                    return TourmalineItem.getTourmaline(stack).equals("transgender") ? 1 : 0;
-                }
-        );
-    }
-
-    private static void registerLesbianTourmalineProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "lesbian"),
-                (stack, level, entity, seed) -> {
-                    return TourmalineItem.getTourmaline(stack).equals("lesbian") ? 1 : 0;
-                }
-        );
-    }
-
-    private static void registerBisexualTourmalineProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "bisexual"),
-                (stack, level, entity, seed) -> {
-                    return TourmalineItem.getTourmaline(stack).equals("bisexual") ? 1 : 0;
-                }
-        );
-    }
-
-    private static void registerAsexualTourmalineProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "asexual"),
-                (stack, level, entity, seed) -> {
-                    return TourmalineItem.getTourmaline(stack).equals("asexual") ? 1 : 0;
-                }
-        );
-    }
-
-    private static void registerNonBinaryTourmalineProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "non_binary"),
-                (stack, level, entity, seed) -> {
-                    return TourmalineItem.getTourmaline(stack).equals("non_binary") ? 1 : 0;
-                }
-        );
-    }
-
-    private static void registerOrenucopiaItemProperty(Item item) {
-        ItemProperties.register(item,
-                new ResourceLocation(Constants.MOD_ID, "orenucopia"),
-                (stack, level, entity, seed) -> {
-                    return OrenucopiaItem.hasContent(stack) ? 1 : 0;
-                }
-        );
+    public static RegistryObject<Block> registerOutcropBlockWithItem(String blockName, String itemName, Supplier<Block> supplier){
+        RegistryObject<Block> block = BLOCKS.register(blockName, supplier);
+        ITEMS.register(itemName, () -> new OutcropSeedItem(block.get(), new Item.Properties()));
+        return block;
     }
 }

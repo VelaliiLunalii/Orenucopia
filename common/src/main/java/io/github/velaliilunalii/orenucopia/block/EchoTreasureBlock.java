@@ -8,20 +8,16 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
 
 import static io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock.AGE;
 import static io.github.velaliilunalii.orenucopia.block.GrowingOutcropBlock.AGING;
@@ -63,6 +59,7 @@ public class EchoTreasureBlock extends BaseEntityBlock {
 
     public static void setBlock(Level level, BlockPos blockPos, Block block){
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
+
         if (blockEntity instanceof EchoTreasureBlockEntity echoTreasureBlockEntity) {
             if (!level.isClientSide) {
                 echoTreasureBlockEntity.setBlock(block);
@@ -71,7 +68,7 @@ public class EchoTreasureBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new EchoTreasureBlockEntity(blockPos, blockState);
     }
 

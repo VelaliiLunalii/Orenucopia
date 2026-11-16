@@ -42,8 +42,8 @@ public class EchoTreasureBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, EchoTreasureBlockEntity blockEntity) {
-        if (level.getGameTime() % 100 == 0) {
-            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.DISPENSER_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+        if (level.getGameTime() % 80 == 0) {
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), CommonClass.SCULK_ECHO, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.4F + 0.8F, false);
 
         }
     }

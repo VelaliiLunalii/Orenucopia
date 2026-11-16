@@ -4,13 +4,20 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.List;
 
 public class OreOutcropBlockSettings {
     public static final Codec<OreOutcropBlockSettings> CODEC = RecordCodecBuilder.create((p_158307_) -> {
         return p_158307_.group(BlockState.CODEC.fieldOf("outcrop_block").forGetter((p_158313_) -> {
             return p_158313_.outcropBlock;
+        }), ExtraCodecs.nonEmptyList(OutcropVariantBlockSettings.CODEC.listOf()).fieldOf("outcrop_variants").orElse(List.of()).forGetter((p_158313_) -> {
+            return p_158313_.outcropVariantSettings;
+        }), Codec.FLOAT.fieldOf("outcrop_variants_chance").orElse(0F).forGetter((p_160850_) -> {
+            return p_160850_.outcropVariantsChance;
         }), TagKey.hashedCodec(Registries.BLOCK).fieldOf("base_blocks").forGetter((p_158313_) -> {
             return p_158313_.baseBlocks;
         }), Codec.FLOAT.fieldOf("grown_outcrop_chance").orElse(0.3F).forGetter((p_160850_) -> {
@@ -25,14 +32,18 @@ public class OreOutcropBlockSettings {
     });
 
     public final BlockState outcropBlock;
+    public final List<OutcropVariantBlockSettings> outcropVariantSettings;
+    public final float outcropVariantsChance;
     public final TagKey<Block> baseBlocks;
     public final float grownOutcropChance;
     public final float growingOutcropChance;
     public final float trailChance;
     public final int maxTrailLength;
 
-    public OreOutcropBlockSettings(BlockState outcropBlock, TagKey<Block> baseBlocks, float grownOutcropChance, float growingOutcropChance, float trailChance, int maxTrailLength) {
+    public OreOutcropBlockSettings(BlockState outcropBlock, List<OutcropVariantBlockSettings> outcropVariantSettings, float outcropVariantsChance, TagKey<Block> baseBlocks, float grownOutcropChance, float growingOutcropChance, float trailChance, int maxTrailLength) {
         this.outcropBlock = outcropBlock;
+        this.outcropVariantSettings = outcropVariantSettings;
+        this.outcropVariantsChance = outcropVariantsChance;
         this.baseBlocks = baseBlocks;
         this.grownOutcropChance = grownOutcropChance;
         this.growingOutcropChance = growingOutcropChance;

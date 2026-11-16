@@ -13,10 +13,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.world.level.block.Blocks.DEEPSLATE;
-import static net.minecraft.world.level.block.Blocks.STONE;
 
 public class ThemedOutcropBlock extends OutcropBlock{
     private final Block block;
@@ -27,20 +25,20 @@ public class ThemedOutcropBlock extends OutcropBlock{
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack tool) {
         super.playerDestroy(level, player, pos, state, blockEntity, tool);
 
         if (!level.isClientSide) {
             RandomSource random = level.getRandom();
 
-            Vec3 randomVectorAngle = Vec3.directionFromRotation((random.nextFloat() * 360) - 180, (random.nextFloat() * 180) - 90);
+            Vec3 randomVectorAngle = Vec3.directionFromRotation(0, (random.nextFloat() * 180) - 90);
             randomVectorAngle = randomVectorAngle.scale(random.nextFloat() * 5 + 10);
 
             BlockPos candidatePos = pos.offset(BlockPos.containing(randomVectorAngle));
             BlockState candidateBlock = level.getBlockState(candidatePos);
             int counter = 0;
-            while (counter < 10 && !candidateBlock.is(DEEPSLATE) && !candidateBlock.is(STONE)) {
-                randomVectorAngle = Vec3.directionFromRotation((random.nextFloat() * 360) - 180, (random.nextFloat() * 180) - 90);
+            while (counter < 10 && !candidateBlock.is(DEEPSLATE)) {
+                randomVectorAngle = Vec3.directionFromRotation(0, (random.nextFloat() * 180) - 90);
                 randomVectorAngle = randomVectorAngle.scale(random.nextFloat() * 3 + 5);
 
                 candidatePos = pos.offset(BlockPos.containing(randomVectorAngle));
@@ -49,18 +47,17 @@ public class ThemedOutcropBlock extends OutcropBlock{
                 counter++;
             }
 
-            if (candidateBlock.is(DEEPSLATE) || candidateBlock.is(STONE)) {
-                level.setBlock(candidatePos, candidateBlock.is(DEEPSLATE)
-                        ? CommonClass.DEEPSLATE_ECHO_TREASURE_BLOCK.defaultBlockState()
-                        : CommonClass.STONE_ECHO_TREASURE_BLOCK.defaultBlockState(), 2);
+            if (candidateBlock.is(DEEPSLATE)) {
+                level.setBlock(candidatePos,CommonClass.ECHO_TREASURE_BLOCK.defaultBlockState(), 2);
                 EchoTreasureBlock.setBlock(level, candidatePos, this.getBlock());
-                System.out.println("-----------");
-                System.out.println(candidatePos);
-            }else {
-                System.out.println("-----------");
-                System.out.println(counter);
             }
         }
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        System.out.println(this.getBlock());
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     public Block getBlock() {
