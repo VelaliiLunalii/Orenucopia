@@ -1,6 +1,9 @@
 {
   "feature": "orenucopia:nether_ore_outcrop",
   "placement": [
-    { "type": "minecraft:count", "count": 3 }
+    {
+      "type": "minecraft:count",
+      "count": 1
+    }
   ]
 }

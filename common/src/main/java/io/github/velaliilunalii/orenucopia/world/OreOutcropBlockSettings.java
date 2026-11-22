@@ -14,8 +14,8 @@ public class OreOutcropBlockSettings {
     public static final Codec<OreOutcropBlockSettings> CODEC = RecordCodecBuilder.create((p_158307_) -> {
         return p_158307_.group(BlockState.CODEC.fieldOf("outcrop_block").forGetter((p_158313_) -> {
             return p_158313_.outcropBlock;
-        }), ExtraCodecs.nonEmptyList(OutcropVariantBlockSettings.CODEC.listOf()).fieldOf("outcrop_variants").orElse(List.of()).forGetter((p_158313_) -> {
-            return p_158313_.outcropVariantSettings;
+        }), ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("outcrop_variants").orElse(List.of()).forGetter((p_158313_) -> {
+            return p_158313_.outcropVariants;
         }), Codec.FLOAT.fieldOf("outcrop_variants_chance").orElse(0F).forGetter((p_160850_) -> {
             return p_160850_.outcropVariantsChance;
         }), TagKey.hashedCodec(Registries.BLOCK).fieldOf("base_blocks").forGetter((p_158313_) -> {
@@ -32,7 +32,7 @@ public class OreOutcropBlockSettings {
     });
 
     public final BlockState outcropBlock;
-    public final List<OutcropVariantBlockSettings> outcropVariantSettings;
+    public final List<BlockState> outcropVariants;
     public final float outcropVariantsChance;
     public final TagKey<Block> baseBlocks;
     public final float grownOutcropChance;
@@ -40,9 +40,9 @@ public class OreOutcropBlockSettings {
     public final float trailChance;
     public final int maxTrailLength;
 
-    public OreOutcropBlockSettings(BlockState outcropBlock, List<OutcropVariantBlockSettings> outcropVariantSettings, float outcropVariantsChance, TagKey<Block> baseBlocks, float grownOutcropChance, float growingOutcropChance, float trailChance, int maxTrailLength) {
+    public OreOutcropBlockSettings(BlockState outcropBlock, List<BlockState> outcropVariants, float outcropVariantsChance, TagKey<Block> baseBlocks, float grownOutcropChance, float growingOutcropChance, float trailChance, int maxTrailLength) {
         this.outcropBlock = outcropBlock;
-        this.outcropVariantSettings = outcropVariantSettings;
+        this.outcropVariants = outcropVariants;
         this.outcropVariantsChance = outcropVariantsChance;
         this.baseBlocks = baseBlocks;
         this.grownOutcropChance = grownOutcropChance;
